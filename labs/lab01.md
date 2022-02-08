@@ -105,7 +105,7 @@ docker rm <CONTAINER_ID>
 Or if you can remove all stopped containers using 'prune' command. After executing it you need to confirm you want to remove all containers.
 
 ```bash
-docker prune containers
+docker container prune
 ```
 
 Let's proceed to a more complex scenario.
