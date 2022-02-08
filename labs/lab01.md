@@ -208,4 +208,4 @@ Congratulations! You've completed Lab01 - Introduction to containers!
 
 ## Next Lab
 
-### [How to create my own container >](lab02.ms)
+### [How to create my own container >](lab02.md)
