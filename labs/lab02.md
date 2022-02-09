@@ -91,6 +91,7 @@ Now that we're done on this step we can stop the container and automatically wil
 ```bash
 docker stop my-first-nginx
 ```
+
 ## Multi-stage Dockerfile
 
 Now let's make everything a little bit more complex.
