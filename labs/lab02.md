@@ -231,7 +231,6 @@ After push is finished you may test if your image is properly available.
 docker run -d -p 9000:80 <DOCKER_ID>/echo-api:v1
 ```
 
-
 And let's test it navigating to <http://localhost:9000/echo/message> and get a "message" as response.
 
 You can clear all your containers since we're done with this lab!
