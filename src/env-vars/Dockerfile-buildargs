@@ -1,0 +1,6 @@
+FROM alpine
+
+ARG DEFAULT_MSG
+ENV ECHO_MSG="${DEFAULT_MSG}"
+
+CMD echo "${ECHO_MSG}"
