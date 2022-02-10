@@ -143,7 +143,7 @@ Now you can open your browser and navigate to <http://localhost:32769> (change t
 If you don't want docker to select ports randomly you can select the port explicitly on the run command.
 
 ```bash
-docker run -p 8080:80 tasb/hello-static-site
+docker run -d -p 8080:80 tasb/hello-static-site
 ```
 
 Now you can navigate to <http://localhost:8080>
