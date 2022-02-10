@@ -217,7 +217,7 @@ You can clear all your containers since we're done with the Echo API!
 In order to publish an image we need to tag it first. Now you'll need you Docker ID.
 
 ```bash
-docker tag echo-api <DOCKER_ID>/my-echo-api:v1
+docker tag my-echo-api <DOCKER_ID>/my-echo-api:v1
 ```
 
 Now you're ready to push your image to your public Docker Hub registry.
