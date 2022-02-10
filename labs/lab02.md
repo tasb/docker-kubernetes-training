@@ -205,7 +205,7 @@ docker images prune
 Now we can create a container from our newly created image.
 
 ```bash
-docker run -d -p 9090:80 echo-api
+docker run -d -p 9090:80 my-echo-api
 ```
 
 And let's test it navigating to <http://localhost:9090/echo/message> and get a "message" as response.
@@ -217,19 +217,19 @@ You can clear all your containers since we're done with the Echo API!
 In order to publish an image we need to tag it first. Now you'll need you Docker ID.
 
 ```bash
-docker tag echo-api <DOCKER_ID>/echo-api:v1
+docker tag echo-api <DOCKER_ID>/my-echo-api:v1
 ```
 
 Now you're ready to push your image to your public Docker Hub registry.
 
 ```bash
-docker push <DOCKER_ID>/echo-api:v1
+docker push <DOCKER_ID>/my-echo-api:v1
 ```
 
 After push is finished you may test if your image is properly available.
 
 ```bash
-docker run -d -p 9000:80 <DOCKER_ID>/echo-api:v1
+docker run -d -p 9000:80 <DOCKER_ID>/my-echo-api:v1
 ```
 
 And let's test it navigating to <http://localhost:9000/echo/message> and get a "message" as response.
