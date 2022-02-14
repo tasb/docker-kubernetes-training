@@ -1,12 +1,13 @@
 {
     "configurations": [
         {
-            "name": "Docker .NET Core Launch",
+            "name": "Echo API",
             "type": "docker",
-            "request": "launch",
-            "preLaunchTask": "docker-run: debug",
-            "netCore": {
-                "appProject": "${workspaceFolder}/src/EchoApp/echo-api/echo-api.csproj"
+            "request": "attach",
+            "platform": "netCore",
+            "containerName": "echoapp-echo-api-1",
+            "sourceFileMap": {
+                "/src/echo-api": "${workspaceFolder}/src/EchoApp/echo-api"
             }
         }
     ]

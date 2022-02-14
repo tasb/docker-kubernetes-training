@@ -1,7 +1,15 @@
+using Microsoft.Extensions.Logging.Console;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Logging.AddSimpleConsole(opts =>
+    {
+        opts.IncludeScopes = false;
+        opts.TimestampFormat = "[yyyy-MM-dd HH:mm:ss] ";
+        opts.ColorBehavior = LoggerColorBehavior.Disabled;
+    });
 
 var app = builder.Build();
 
@@ -14,6 +22,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/echo/{message}", (string message) =>
 {
+    app.Logger.LogInformation("Echoing message: {Message}", message);
     return Results.Ok(message);
 })
 .WithName("Echo");

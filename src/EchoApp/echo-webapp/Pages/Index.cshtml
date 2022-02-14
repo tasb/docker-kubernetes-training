@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Echo WebApp</h1>
+    <form class="form-group" method="post">
+    <div class="form-group">
+        <div class="display-4">
+            <input type="text" class="form-control form-control-lg" name="Message">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="display-4">
+            <button type="submit" class="btn btn-primary">Make Echo!</button>
+        </div>
+    </div>
+    
+    <h2>@ViewData["EchoedMessage"]</h2>
+</form>
+</div>
