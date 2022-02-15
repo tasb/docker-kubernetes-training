@@ -1,6 +1,8 @@
 # Training on Containers and Kubernetes
 
-On this repo you can find 10 different labs that allow tyou to gradually have an hands-on experience on containers (using Docker) and Kubernetes (using Docker Kubernetes)
+On this repo you can find 10 different labs that allow tyou to gradually have an hands-on experience on containers (using Docker) and Kubernetes (using Docker Kubernetes).
+
+Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access a better version of these instructions.
 
 ## On this page
 
