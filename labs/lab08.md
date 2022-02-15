@@ -1,1 +1,5 @@
-# Lab 08 - Persistency in Kubernetes
+# Lab 08 - Persistence in Kubernetes
+
+## Next Lab
+
+### [Persistence in Kubernetes >](lab09.md)

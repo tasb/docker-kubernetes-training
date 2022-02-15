@@ -28,7 +28,7 @@ Did you managed to get the command? If not, click on below link.
 
 ## Run the lab
 
-After that navigate to <http://localhost:8080> you should get an weg page like this.
+After that navigate to <http://localhost:8080> you should get an web page like this.
 
 ![Docker tutorial](images/lab04/image01.jpg "Docker tutorial")
 
@@ -37,3 +37,7 @@ You must follow in sequence the links on left-side menu.
 ![Lab steps](images/lab04/image02.jpg "Lab steps")
 
 Have fun!
+
+## Next Lab
+
+### [Introduction to Kubernetes >](lab05.md)

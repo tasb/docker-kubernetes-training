@@ -30,14 +30,14 @@ You may navigate for each one individually or you may follow the sequence starti
 
 1. [Introduction to containers](/labs/lab01.md)
 2. [How to create my own container](/labs/lab02.md)
-3. [Persistency in containers](/labs/lab03.md)
+3. [Persistence in containers](/labs/lab03.md)
 4. [Let’s put all together!](/labs/lab04.md)
 5. [Introduction to Kubernetes](/labs/lab05.md)
 6. [Deployment lifecycle](/labs/lab06.md)
 7. [Managing services](/labs/lab07.md)
-8. [Persistency in Kubernetes](/labs/lab08.md)
-9. [Monitoring in Kubernetes](/labs/lab09.md)
-10. [Let's put everything together!](/labs/lab10.md)
+8. [Persistence in Kubernetes](/labs/lab08.md)
+9. [Monitoring and Operation](/labs/lab09.md)
+10. [Connect all the dots](/labs/lab10.md)
 
 ## Feedback
 
