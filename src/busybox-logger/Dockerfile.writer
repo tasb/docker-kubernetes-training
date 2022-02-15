@@ -1,0 +1,12 @@
+FROM busybox
+
+ARG LOG_FILE
+ENV LOG_FILE=$LOG_FILE
+
+WORKDIR /script
+
+COPY run-writer.sh .
+
+RUN chmod +x run-writer.sh
+
+CMD ["/script/run-writer.sh" ]

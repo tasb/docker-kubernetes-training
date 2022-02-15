@@ -1,0 +1,12 @@
+FROM busybox
+
+ARG LOG_FILE
+ENV LOG_FILE=$LOG_FILE
+
+WORKDIR /script
+
+COPY run-reader.sh .
+
+RUN chmod +x run-reader.sh
+
+CMD ["/script/run-reader.sh" ]
