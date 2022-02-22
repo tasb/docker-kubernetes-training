@@ -43,7 +43,7 @@ This message shows that your installation appears to be working correctly.
 
 Let's play with Busybox. [Busybox](https://hub.docker.com/_/busybox) is a container maintained by Docker community and have a lot usage since combines tiny versions of many common UNIX utilities into a single small executable.
 
-To get started, let's donwload the image to our local cache.
+To get started, let's download the image to our local cache.
 
 ```bash
 docker pull busybox
@@ -62,7 +62,7 @@ REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
 busybox      latest    ec3f0931a6e6   3 days ago   1.24MB
 ```
 
-Ok! Now we have the image on our local cache. Let's run it?
+Ok! Now you have the image on our local cache. Let's run it?
 
 ```bash
 docker run busybox
@@ -126,13 +126,13 @@ Let's look into all parts of this command:
 - --name my-static-website: gives an user specified name to the container instead a random one
 - tasb/hello-static-site: image to be used to create the container
 
-And how can I know the port that docker choos on my host? It's easy, let's run this command.
+And how can I know the port that docker selected on my host? It's easy, let's run this command.
 
 ```bash
 docker port my-static-website
 ```
 
-You should see an output similiar to this one.
+You should see an output similar to this one.
 
 ```bash
 80/tcp -> 0.0.0.0:32769
@@ -166,13 +166,13 @@ And now the list of all containers
 docker ps -q 
 ```
 
-If we need another instance we can start again the initial container
+If you need another instance you can start again the initial container
 
 ```bash
 docker start my-static-website
 ```
 
-Now that we managed containers lifecycle, let's remove all of them. Since we have the containers running we need to force the remove command.
+Now that you managed containers lifecycle, let's remove all of them. Since you have the containers running you need to force the remove command.
 
 ```bash
 docker rm -f $(docker ps -aq)
@@ -196,7 +196,7 @@ Let's execute a simple webpage based on aspnet.
 docker run -d -p 9000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
 ```
 
-Run your browser and navigate to <http://localhost:9000> to see the website and check you're running on a Widnows Container.
+Run your browser and navigate to <http://localhost:9000> to see the website and check you're running on a Windows Container.
 
 You can now clean up all running containers and switch to Linux Containers again to be prepared for the next lab.
 

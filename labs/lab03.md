@@ -12,7 +12,7 @@ Then we'll use environment variables to execute containers with different values
 
 ## Create volume
 
-Before sharing data between container, we need a volume. Let's create a volume.
+Before sharing data between container, you need a volume. Let's create a volume.
 
 ```bash
 docker volume create lab03-volume

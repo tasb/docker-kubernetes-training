@@ -13,7 +13,7 @@ On this lab you'll have a first hands-on experience with Kubernetes.
 
 ## Prepare your machine
 
-Before you start this lab you need to make sure you have your machine ready to use a kubernetes dev cluster.
+Before you start this lab you need to make sure you have your machine ready to use a Kubernetes dev cluster.
 
 First, ensure you enable Kubernetes option on Docker Desktop. You have more details [here](https://docs.docker.com/desktop/kubernetes/#enable-kubernetes)
 
@@ -32,7 +32,7 @@ Server Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.9", GitCom
 
 ## Set Context
 
-Now we need to configure the context of `kubectl` tool to be set for Kubernetes cluster configured by Docker Desktop.
+Now you need to configure the context of `kubectl` tool to be set for Kubernetes cluster configured by Docker Desktop.
 
 Let's list all available contexts.
 
@@ -126,7 +126,7 @@ Navigate to <http://localhost:8080> to check that your website is working proper
 
 To exit port-forward you can user `Ctrl+C` on the terminal.
 
-Now we will deploy a different version of that pod using the same file only changing image name.
+Now you will deploy a different version of that pod using the same file only changing image name.
 
 On `pod.yaml` file change image to `tasb/hello-static-site:k8s` and run `apply` command again.
 
@@ -160,13 +160,13 @@ kubectl delete pod my-simple-website
 
 ## Pod advanced configuration
 
-Now we'll create a more complex pod with additional configuration.
+Now you'll create a more complex pod with additional configuration.
 
 First, if you are using docker-desktop Kubernetes you need to take a initial step to enable metrics server.
 
-Download the following file: 
+Create a file called `metrics-server.yaml` and add the content available on [this link](https://gist.github.com/tasb/4667515a028f929af3a6a18d609d0c82)
 
-Then we need to apply it:
+Then you need to apply it:
 
 ```bash
 kubectl apply -f metrics-server.yaml
@@ -224,7 +224,7 @@ spec:
           memory: "500M"
 ```
 
-On this manifest we're creating a single pod with two containers: redis database and voting website.
+On this manifest, you're creating a single pod with two containers: redis database and voting website.
 
 Let's dig on specific parts of manifest.
 
@@ -234,9 +234,9 @@ env:
   value: localhost
 ```
 
-On this block we defined a environment variable to be set on container startup to define where website can find the Redis database.
+On this block you defined a environment variable to be set on container startup to define where website can find the Redis database.
 
-We use `localhost` as value since the two containers communicate using IPC (Inter Process Communication).
+You use `localhost` as value since the two containers communicate using IPC (Inter Process Communication).
 
 ```yaml
 resources:
@@ -248,7 +248,7 @@ resources:
     memory: "500M"
 ```
 
-On this block we defined the resources requests and limits for each container. Requests needs to be met by scheduler when selecting the node. Limits represent the maximum amount of each resource that the container can consume.
+On this block you defined the resources requests and limits for each container. Requests needs to be met by scheduler when selecting the node. Limits represent the maximum amount of each resource that the container can consume.
 
 Let's run this pod.
 
@@ -279,7 +279,7 @@ kubectl describe pod vote-app
 
 Take some time to look into all the details from this pod.
 
-Then we need to make a port forwarding to have access to this website.
+Then you need to make a port forwarding to have access to this website.
 
 ```bash
 kubectl port-forward vote-app 8080:80

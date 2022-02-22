@@ -1,15 +1,15 @@
 # Lab 02 - How to create my own containers
 
-On this lab you'll create your first image using a Dockerfile and puclish on a public registry.
+On this lab you'll create your first image using a Dockerfile and publish on a public registry.
 
 ## On this lab
 
-- [Prerequesites](README.md#prerequesites)
+- [Prerequisites](README.md#prerequisites)
 - [Simple Dockerfile](README.md#simple-dockerfile)
 - [Multi-stage Dockerfile](README.md#multi-stage-dockerfile)
 - [Publish an Image](README.md#publish-an-image)
 
-## Prerequesites
+## Prerequisites
 
 To complete this lab you need to create (if you don't have already) a Docker account to allow you to push your image to a public registry.
 
@@ -82,11 +82,11 @@ Now let's run your container creating an instance of this image.
 docker run -d --rm -p 8080:80 --name my-first-nginx my-nginx
 ```
 
-We are using the flag '--rm' that will remove the container automatically as soon as it is stopped.
+You are using the flag '--rm' that will remove the container automatically as soon as it is stopped.
 
 And let's test it navigating to <http://localhost:8080> and take a look on this amazing HTML page! :)
 
-Now that we're done on this step we can stop the container and automatically will be removed.
+Now that we're done on this step you can stop the container and automatically will be removed.
 
 ```bash
 docker stop my-first-nginx
@@ -138,7 +138,7 @@ Let's check the images you have on your local cache
 docker images
 ```
 
-And you should get an output similiar with this.
+And you should get an output similar with this.
 
 ```bash
 REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
@@ -151,7 +151,7 @@ If you run again the same build command you will see that most of the stepped wi
 docker build -t my-echo-api .
 ```
 
-And you get an outptu like this.
+And you get an output like this.
 
 ```bash
 => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal@sha256:344352a571b0f9b17fb32fd9ab6cdac7415f2a5c1f35
@@ -178,7 +178,7 @@ Let's check the images you have on your local cache
 docker images
 ```
 
-And you should get an output similiar with this.
+And you should get an output similar with this.
 
 ```bash
 REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
@@ -188,7 +188,7 @@ echo-api     latest    c36601aec6ad   5 seconds ago        213MB
 
 You may find strange the image called '< none >'. This image represents the first created image that was replaced by this new build command.
 
-This images are called dangling images and cannot be instatiate. Is a good practice to regularly clear them from your local cache.
+This images are called dangling images and cannot be instantiate. Is a good practice to regularly clear them from your local cache.
 
 You may use filters on docker rmi command.
 
@@ -202,7 +202,7 @@ Or use docker prune command.
 docker images prune
 ```
 
-Now we can create a container from our newly created image.
+Now you can create a container from our newly created image.
 
 ```bash
 docker run -d -p 9090:80 my-echo-api
@@ -214,7 +214,7 @@ You can clear all your containers since we're done with the Echo API!
 
 ## Publish an Image
 
-In order to publish an image we need to tag it first. Now you'll need you Docker ID.
+In order to publish an image you need to tag it first. Now you'll need you Docker ID.
 
 ```bash
 docker tag my-echo-api <DOCKER_ID>/my-echo-api:v1
