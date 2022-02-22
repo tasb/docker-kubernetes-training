@@ -1,3 +1,3 @@
-FROM my-ubuntu
+FROM myubuntu
 
 CMD ["cowsay", "Yo, CMD !!"]
