@@ -164,7 +164,7 @@ Now you'll create a more complex pod with additional configuration.
 
 First, if you are using docker-desktop Kubernetes you need to take a initial step to enable metrics server.
 
-Create a file called `metrics-server.yaml` and add the content available on [this link](https://gist.github.com/tasb/4667515a028f929af3a6a18d609d0c82)
+Create a file called `metrics-server.yaml` and add the content available on [this link](https://gist.github.com/tasb/4667515a028f929af3a6a18d609d0c82).
 
 Then you need to apply it:
 

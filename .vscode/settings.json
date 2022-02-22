@@ -1,5 +1,26 @@
 {
     "cSpell.enableFiletypes": [
+        "!c",
+        "!cpp",
+        "!csharp",
+        "!css",
+        "!go",
+        "!graphql",
+        "!handlebars",
+        "!haskell",
+        "!jade",
+        "!java",
+        "!javascript",
+        "!php",
+        "!pug",
+        "!python",
+        "!rust",
+        "!scala",
+        "!scss",
+        "!swift",
+        "!vue",
+        "!yaml",
+        "!yml",
         "markdown"
     ],
     "cSpell.enabled": true
