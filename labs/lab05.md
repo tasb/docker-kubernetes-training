@@ -348,7 +348,7 @@ You can see that the name of the pod is exactly the same that the previous one t
 Let's try to have access to this webapp.
 
 ```bash
-kubectl port-forward vote-app 9000:80
+kubectl port-forward vote-app -n my-ns 9000:80
 ```
 
 Now it's time to navigate to <http://localhost:9000> and have access to voting app website.
