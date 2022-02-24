@@ -145,7 +145,7 @@ You should see `Running` on Status column on returned list.
 Now let's interact with our new website.
 
 ```bash
-kubectl port-forward my-simple-site 8080:80
+kubectl port-forward my-simple-website 8080:80
 ```
 
 Navigate to <http://localhost:8080> to check that your website is working properly.
