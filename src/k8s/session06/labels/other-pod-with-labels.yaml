@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+  namespace: ns-labels
+  labels:
+    app: myapp
+    tier: back
+spec:
+  containers:
+  - image: redis
+    name: redis-container
+    ports:
+    - containerPort: 80
