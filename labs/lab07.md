@@ -15,32 +15,34 @@ First step to get your app (or services) running on a kubernetes cluster you nee
 Let's try to create deployment manifests on your own.
 
 For `echo-api`deployment:
+
 - Filename: echo-api-dep.yaml
 - Deployment name: echo-api-dep
 - Replicas: 3
 - Labels:
-    - app: echo-app
-    - tier: back
+  - app: echo-app
+  - tier: back
 - Pod
-    - Name: echo-api
-    - Image: tasb/echo-api:k8s
-    - Port: 80
+  - Name: echo-api
+  - Image: tasb/echo-api:k8s
+  - Port: 80
 
-If you want to get full content for this deployment, navigate to this link.
+If you want to get full content for this deployment, navigate to this [link](https://raw.githubusercontent.com/tasb/docker-kubernetes-training/main/src/EchoApp/manifests/echo-api-dep.yaml).
 
 For `echo-webpp`deployment:
+
 - Filename: echo-webapp-dep.yaml
 - Deployment name: echo-webpp-dep
 - Replicas: 3
 - Labels:
-    - app: echo-app
-    - tier: front
+  - app: echo-app
+  - tier: front
 - Pod
-    - Name: echo-webpp
-    - Image: tasb/echo-webpp:k8s
-    - Port: 80
+  - Name: echo-webpp
+  - Image: tasb/echo-webpp:k8s
+  - Port: 80
 
-If you want to get full content for this deployment, navigate to this link.
+If you want to get full content for this deployment, navigate to this [link](https://raw.githubusercontent.com/tasb/docker-kubernetes-training/main/src/EchoApp/manifests/echo-webapp-dep.yaml).
 
 Now you can apply your manifests on your cluster. To better manage these deployments, let's create a namespace.
 
@@ -217,6 +219,7 @@ spec:
 ```
 
 With this ingress you will get:
+
 - Requests to <http://localhost/> will be forward to `echo-webapp-svc` service
 - Requests to <http://localhost/api> will be forward to `echo-api-svc` service
 

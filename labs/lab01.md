@@ -180,6 +180,8 @@ docker rm -f $(docker ps -aq)
 
 ## Windows Containers
 
+<span style="color:red">**ONLY FOR WINDOWS MACHINES!**</span>
+
 First let's move from Linux Containers to Windows Containers. Right-click on docker icon on Windows system tray and select option "Switch to Windows Containers..." as next image.
 
 ![Switch to Windows Containers...](images/lab01/image01.jpg "Switch to Windows Containers...")

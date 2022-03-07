@@ -8,6 +8,7 @@ Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access 
 
 - [Prerequisites](README.md#prerequisties)
 - [Labs](README.md#labs)
+- [Slides](README.md#slides)
 - [Feedback](README.md#feedback)
 
 ## Prerequisites
@@ -25,10 +26,11 @@ To be able to perform the labs describe on this repo you may have the following 
 7. Enable [Kubernetes on Docker Desktop](https://docs.docker.com/desktop/kubernetes/) (you may use any other kubernetes cluster at your choice)
 
 ### Prerequisites - Ubuntu
+
 1. Ubuntu 20.04
 2. Docker. [How to install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-3. Minikube. [How to install Minikube on Ubuntu] (https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/)
-4. Kubectl. [How to install Kubectl on Ubuntu] (https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
+3. Minikube. [How to install Minikube on Ubuntu](https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/)
+4. Kubectl. [How to install Kubectl on Ubuntu](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
 5. Install [Visual Studio Code](https://code.visualstudio.com/) (or other code editor of your preference)
 
 ## Labs
@@ -62,7 +64,6 @@ Get access to the content used to share Kubernetes concepts during sessions.
 8. Persistence in Kubernetes
 9. Monitoring and Operation
 10. Connect all the dots
-
 
 ## Feedback
 
