@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample
+      tech: dotnet
+  template:
+    metadata:
+      labels:
+        app: sample
+        tech: dotnet
+    spec:
+      containers:
+      - name: sample
+        image: mcr.microsoft.com/dotnet/samples:aspnetapp
+        ports:
+        - containerPort: 80               

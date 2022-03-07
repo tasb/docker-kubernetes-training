@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.Extensions.Logging.Console;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,5 +27,13 @@ app.MapGet("/echo/{message}", (string message) =>
     return Results.Ok(message);
 })
 .WithName("Echo");
+
+app.MapGet("/hostname", () =>
+{
+    var hostname = Dns.GetHostName();
+    app.Logger.LogInformation("Getting hostname: {Hostname}", hostname);
+    return Results.Ok(hostname);
+})
+.WithName("Hostname");
 
 app.Run();

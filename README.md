@@ -24,6 +24,13 @@ To be able to perform the labs describe on this repo you may have the following 
 6. Install [Visual Studio Code](https://code.visualstudio.com/) (or other code editor of your preference)
 7. Enable [Kubernetes on Docker Desktop](https://docs.docker.com/desktop/kubernetes/) (you may use any other kubernetes cluster at your choice)
 
+### Prerequisites - Ubuntu
+1. Ubuntu 20.04
+2. Docker. [How to install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+3. Minikube. [How to install Minikube on Ubuntu] (https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/)
+4. Kubectl. [How to install Kubectl on Ubuntu] (https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
+5. Install [Visual Studio Code](https://code.visualstudio.com/) (or other code editor of your preference)
+
 ## Labs
 
 On next links you may find the hands-on exercises to give you rmore experience on this topics.
@@ -40,6 +47,22 @@ You may navigate for each one individually or you may follow the sequence starti
 8. [Persistence in Kubernetes](/labs/lab08.md)
 9. [Monitoring and Operation](/labs/lab09.md)
 10. [Connect all the dots](/labs/lab10.md)
+
+## Slides
+
+Get access to the content used to share Kubernetes concepts during sessions.
+
+1. [Introduction to containers](/slides/Session01.pdf)
+2. [Dockerfiles and Tags](/slides/Session02.pdf)
+3. [Persistence in containers](/slides/Session03.pdf)
+4. [Docker compose](/slides/Session01.pdf)
+5. [Introduction to Kubernetes](/slides/Session05.pdf)
+6. [Deployments & ReplicaSets](/slides/Session06.pdf)
+7. [Kubernetes services](/slides/Session07.pdf)
+8. Persistence in Kubernetes
+9. Monitoring and Operation
+10. Connect all the dots
+
 
 ## Feedback
 

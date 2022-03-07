@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-api-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: back
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: back
+    spec:
+      containers:
+      - name: echo-api
+        image: tasb/echo-api:k8s
+        ports:
+        - containerPort: 80  
