@@ -221,7 +221,7 @@ spec:
 With this ingress you will get:
 
 - Requests to <http://localhost/> will be forward to `echo-webapp-svc` service
-- Requests to <http://localhost/api> will be forward to `echo-api-svc` service
+- Requests to <http://localhost/api/echo/message> will be forward to `echo-api-svc` service
 
 Let's dive on the ingress file.
 
@@ -245,13 +245,13 @@ annotations:
 Now it's time to apply the ingress on your cluster.
 
 ```bash
-kubectl apply -f echo-app-ingress.yaml
+kubectl apply -f echo-app-ingress.yaml -n echo-app-ns
 ```
 
 You can check if you ingress is properly configured running this command.
 
 ```bash
-kubectl describe ingress echo-app-ingress
+kubectl describe ingress echo-app-ingress -n echo-app-ns
 ```
 
 Finally, let's test if everything is working properly.
