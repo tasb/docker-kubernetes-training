@@ -14,7 +14,7 @@ First step to get your app (or services) running on a kubernetes cluster you nee
 
 Let's try to create deployment manifests on your own.
 
-For `echo-api`deployment:
+For `echo-api-dep`deployment:
 
 - Filename: echo-api-dep.yaml
 - Deployment name: echo-api-dep
@@ -29,17 +29,17 @@ For `echo-api`deployment:
 
 If you want to get full content for this deployment, navigate to this [link](https://raw.githubusercontent.com/tasb/docker-kubernetes-training/main/src/EchoApp/manifests/echo-api-dep.yaml).
 
-For `echo-webpp`deployment:
+For `echo-webapp-dep`deployment:
 
 - Filename: echo-webapp-dep.yaml
-- Deployment name: echo-webpp-dep
+- Deployment name: echo-webapp-dep
 - Replicas: 3
 - Labels:
   - app: echo-app
   - tier: front
 - Pod
-  - Name: echo-webpp
-  - Image: tasb/echo-webpp:k8s
+  - Name: echo-webapp
+  - Image: tasb/echo-webapp:k8s
   - Port: 80
 
 If you want to get full content for this deployment, navigate to this [link](https://raw.githubusercontent.com/tasb/docker-kubernetes-training/main/src/EchoApp/manifests/echo-webapp-dep.yaml).
@@ -75,7 +75,7 @@ echo-webapp-dep   3/3     3            3           18s
 
 Now you should create the services to get access to your Echo App.
 
-First, create a file called `echo-api-dep.yaml` and add the following content.
+First, create a file called `echo-api-svc.yaml` and add the following content.
 
 ```yaml
 apiVersion: v1
@@ -111,7 +111,7 @@ This service have another endpoint that you can call several time to check that 
 
 Navigate (or use `curl` command on command line) to <http://localhost:8080/hostname> and check the output to change (not on every call since your cluster uses a random algorithm as balancing algorithm).
 
-Now let's create Echo Webapp service. Create a file called `echo-webapp-dep.yaml` and add the following content.
+Now let's create Echo Webapp service. Create a file called `echo-webapp-svc.yaml` and add the following content.
 
 ```yaml
 apiVersion: v1
