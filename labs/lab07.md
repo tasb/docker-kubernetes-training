@@ -93,9 +93,9 @@ spec:
   type: LoadBalancer
 ```
 
-This is a Load Balancer type service to grant you access directly from outside your cluster (on this lab, using `localhost`).
+This is a Load Balancer type service to grant you access directly from outside of your cluster (on this lab, using `localhost`).
 
-The `selector` block will make the match with the labels you added on the pods on youe deployment.
+The `selector` block will make the match with the labels you added on the pods on your deployment.
 
 On `ports` block you define your service port to be `8080` and any request to it will forward to port `80` on the container.
 
@@ -107,7 +107,7 @@ kubectl apply -f echo-api-svc.yaml -n echo-app-ns
 
 To check if everything is working properly navigate to <http://localhost:8080/echo/message>.
 
-This service have another endpoint that you can call several time to check that you're being served by diferent pods.
+This service have another endpoint that you can call several time to check that you're being served by different pods.
 
 Navigate (or use `curl` command on command line) to <http://localhost:8080/hostname> and check the output to change (not on every call since your cluster uses a random algorithm as balancing algorithm).
 
@@ -141,7 +141,7 @@ Now your already have your frontend and backend available from outside of your c
 
 ## Define ingress
 
-To have a better definition of your app, since you don't want to access your webapp and api on diferent ports.
+To have a better definition of your app, since you don't want to access your webapp and api on different ports.
 
 Before create your first ingress, you need to install an ingress controller on your cluster.
 
@@ -157,13 +157,13 @@ With this command you learn that you may use an http URL on the `kubectl apply` 
 
 You need to check if ingress controller is already available on your cluster.
 
-To do that, run the following command to check the status of the pod that implements the ingress controler.
+To do that, run the following command to check the status of the pod that implements the ingress controller.
 
 ```bash
 kubectl get pods --namespace=ingress-nginx
 ```
 
-You should get an outpu similar like this.
+You should get an output similar like this.
 
 ```bash
 NAME                                        READY   STATUS      RESTARTS       AGE
@@ -252,6 +252,6 @@ On webapp, if you fill the input box with same text and click on `Make Echo!` bu
 
 Let's check next lab to fix this!
 
-## Next Lab
+## Next Lab: [Persistence in Kubernetes >](lab08.md)
 
-### [Persistence in Kubernetes >](lab08.md)
+[Return home >](../README.md#labs)

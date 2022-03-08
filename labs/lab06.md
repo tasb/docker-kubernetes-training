@@ -164,6 +164,6 @@ You must see `version=v1`on pod's labels list.
 
 And you're done working with deployments. Next you'll see how you can work with this deployments as a unique object.
 
-## Next Lab
+## Next Lab: [Managing services >](lab07.md)
 
-### [Managing services >](lab07.md)
+[Return home >](../README.md#labs)

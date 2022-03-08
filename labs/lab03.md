@@ -178,6 +178,6 @@ We're done! You can clean all containers on your machine.
 docker rm -f $(docker ps -aq)
 ```
 
-## Next Lab
+## Next Lab: [Let’s put all together >](lab04.md)
 
-### [Let’s put all together >](lab04.md)
+[Return home >](../README.md#labs)

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dotnet-pvc
+  template:
+    metadata:
+      labels:
+        app: dotnet-pvc
+    spec:
+      containers:
+      - name: sample
+        image: mcr.microsoft.com/dotnet/samples:aspnetapp
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: "/share"
+            name: my-storage          
+      volumes:
+        - name: my-storage
+          persistentVolumeClaim:
+            claimName: sample-pv-claim
+      

@@ -375,6 +375,6 @@ The first voting app is still running and to delete it use the following command
 kubectl delete pod vote-app
 ```
 
-## Next Lab
+## Next Lab: [Deployment lifecycle >](lab06.md)
 
-### [Deployment lifecycle >](lab06.md)
+[Return home >](../README.md#labs)

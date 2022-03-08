@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapp-config
+data:
+  database: mongodb
+  database_uri: mongodb://localhost:27017
+
+  user-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true

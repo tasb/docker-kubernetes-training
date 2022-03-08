@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ephemeral-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ephemeral-vol
+  template:
+    metadata:
+      labels:
+        app: ephemeral-vol
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: tempvol
+            mountPath: /share
+        - name: nginx
+          image: nginx:1.17
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: tempvol
+            mountPath: /usr/share/nginx/html
+          - mountPath: /share/somefile
+            name: hostfolder
+            readOnly: true
+      volumes:
+      - name: tempvol
+        emptyDir: {}
+      - name: hostfolder
+        hostPath:
+          path: /bin/cat
+          type: FileOrCreate

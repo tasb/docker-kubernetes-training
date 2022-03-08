@@ -236,6 +236,6 @@ And let's test it navigating to <http://localhost:9000/echo/message> and get a "
 
 You can clear all your containers since we're done with this lab!
 
-## Next Lab
+## Next Lab: [Persistency in containers >](lab03.md)
 
-### [Persistency in containers >](lab03.md)
+[Return home >](../README.md#labs)

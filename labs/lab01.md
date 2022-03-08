@@ -208,6 +208,6 @@ docker rm -f $(docker ps -aq)
 
 Congratulations! You've completed Lab01 - Introduction to containers!
 
-## Next Lab
+## Next Lab: [How to create my own container >](lab02.md)
 
-### [How to create my own container >](lab02.md)
+[Return home >](../README.md#labs)

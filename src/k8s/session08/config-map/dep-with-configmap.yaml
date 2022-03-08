@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-config
+  template:
+    metadata:
+      labels:
+        app: nginx-config
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        env:
+        - name: DATABASE_TYPE
+          value: "mongo"
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: myapp-config
+              key: database_uri
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+          readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: myapp-config
+            items:
+            - key: "user-interface.properties"
+              path: "ui.properties"

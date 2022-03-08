@@ -38,6 +38,6 @@ You must follow in sequence the links on left-side menu.
 
 Have fun!
 
-## Next Lab
+## Next Lab: [Introduction to Kubernetes >](lab05.md)
 
-### [Introduction to Kubernetes >](lab05.md)
+[Return home >](../README.md#labs)
