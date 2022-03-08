@@ -242,6 +242,18 @@ annotations:
 
 `$1` means the first matching by regex on the URL. Knowing this, you may have several matches on URL and send them to the service.
 
+Now it's time to apply the ingress on your cluster.
+
+```bash
+kubectl apply -f echo-app-ingress.yaml
+```
+
+You can check if you ingress is properly configured running this command.
+
+```bash
+kubectl describe ingress echo-app-ingress
+```
+
 Finally, let's test if everything is working properly.
 
 Navigate to <http://localhost> and you should see Echo App Webapp.
