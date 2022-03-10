@@ -305,7 +305,7 @@ kubectl apply -f echo-db-dep.yaml -n echo-app-ns
 Then create the service that will expose your database inside your cluster.
 
 ```bash
-kubectl apply -f echo-db-dep.yaml -n echo-app-ns
+kubectl apply -f echo-db-svc.yaml -n echo-app-ns
 ```
 
 Check if everything is running properly with the following command.
