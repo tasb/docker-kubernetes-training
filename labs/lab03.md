@@ -5,10 +5,10 @@ Then we'll use environment variables to execute containers with different values
 
 ## On this lab
 
-- [Create Volume](README.md#create-volume)
-- [Create Scripts](README.md#create-scripts)
-- [Create Images](README.md#create-images)
-- [Run Containers](README.md#run-containers)
+- [Create Volume](lab03.md#create-volume)
+- [Create Scripts](lab03.md#create-scripts)
+- [Create Images](lab03.md#create-images)
+- [Run Containers](lab03.md#run-containers)
 
 ## Create volume
 

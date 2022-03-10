@@ -29,8 +29,12 @@ public class IndexModel : PageModel
 
     public void OnPost()
     {
+        _logger.LogInformation("Sending message to echo service");
         var apiUrl = _configuration["EchoAPIServer"];
-        var response = client.GetStringAsync($"http://{apiUrl}/echo/{Message}").Result;
+        var url = String.Format("http://{0}/echo/{1}" , apiUrl, Message);
+        _logger.LogInformation($"Sending request to {url}");
+        var response = client.GetStringAsync(url).Result;
+        _logger.LogInformation($"Response from {url} is {response}");
         ViewData["EchoedMessage"] = $"Echo: {response}";
     }
 }

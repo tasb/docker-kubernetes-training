@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-app-cfg
+data:
+  echo-api-server: echo-api-svc:8080

@@ -1,5 +1,8 @@
 version: '3'
 services:
+  echo-bd:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  
   echo-webapp:
     image: echo-webapp:compose
     build:
@@ -12,6 +15,8 @@ services:
     build:
       context: echo-api
       dockerfile: ./Dockerfile.multi
+    depends_on:
+      - echo-bd
     
 
     

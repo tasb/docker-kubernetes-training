@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-api-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: back
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: back
+    spec:
+      containers:
+      - name: echo-api
+        image: tasb/echo-api:k8s-v2
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: echo-api-db-secret
+              key: connString

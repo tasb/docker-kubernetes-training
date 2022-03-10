@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-db-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: db
+    spec:
+      containers:
+      - name: echo-db
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        ports:
+        - containerPort: 80  
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: echo-api-db-secret
+              key: dbpass
+        volumeMounts:
+          - mountPath: "/var/opt/mssql/data"
+            name: db-storage          
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: echo-app-pv-claim

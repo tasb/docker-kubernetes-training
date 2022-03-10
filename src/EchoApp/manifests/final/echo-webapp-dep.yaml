@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-webapp-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: front
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: front
+    spec:
+      containers:
+      - name: echo-webapp
+        image: tasb/echo-webapp:k8s-v2
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        env:
+        - name: EchoAPIServer
+          valueFrom:
+            configMapKeyRef:
+              name: echo-app-cfg
+              key: echo-api-server

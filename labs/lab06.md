@@ -4,9 +4,9 @@ On this lab you'll create a new deployment and work with revisions.
 
 ## On this lab
 
-- [Create your first Deployment](README.md#create-your-first-deployment)
-- [Update deployment](README.md#update-deployment)
-- [Rollback deployment](README.md#rollback-deployment)
+- [Create your first Deployment](lab06.md#create-your-first-deployment)
+- [Update deployment](lab06.md#update-deployment)
+- [Rollback deployment](lab06.md#rollback-deployment)
 
 ## Create your first Deployment
 

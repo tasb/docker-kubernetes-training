@@ -4,9 +4,9 @@ On this lab you'll create deployments and services to deploy an Echo App.
 
 ## On this lab
 
-- [Create deployments](README.md#create-deployments)
-- [Create services](README.md#create-services)
-- [Define ingress](README.md#define-ingress)
+- [Create deployments](lab07.md#create-deployments)
+- [Create services](lab07.md#create-services)
+- [Define ingress](lab07.md#define-ingress)
 
 ## Create deployments
 
@@ -237,7 +237,7 @@ The way for your to send this to the service is defined on the following lines.
 
 ```yaml
 annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  nginx.ingress.kubernetes.io/rewrite-target: /$1
 ```
 
 `$1` means the first matching by regex on the URL. Knowing this, you may have several matches on URL and send them to the service.

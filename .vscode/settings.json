@@ -23,5 +23,9 @@
         "!yml",
         "markdown"
     ],
-    "cSpell.enabled": true
+    "cSpell.enabled": true,
+    "cSpell.words": [
+        "kubectl",
+        "Kubernetes"
+    ]
 }

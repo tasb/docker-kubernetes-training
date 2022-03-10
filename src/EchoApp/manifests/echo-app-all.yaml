@@ -1,0 +1,119 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: echo-app-ns
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-api-svc
+  namespace: echo-app-ns
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      name: api
+  selector:
+    app: echo-app
+    tier: back
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-webapp-svc
+  namespace: echo-app-ns
+spec:
+  ports:
+    - port: 9000
+      targetPort: 80
+      name: web
+  selector:
+    app: echo-app
+    tier: front
+  type: ClusterIP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-api-dep
+  namespace: echo-app-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: back
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: back
+    spec:
+      containers:
+      - name: echo-api
+        image: tasb/echo-api:k8s
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-webapp-dep
+  namespace: echo-app-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-app
+      tier: front
+  template:
+    metadata:
+      labels:
+        app: echo-app
+        tier: front
+    spec:
+      containers:
+      - name: echo-webapp
+        image: tasb/echo-webapp:k8s
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-app-ingress
+  namespace: echo-app-ns
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-webapp-svc
+            port:
+              number: 9000
+      - path: /api/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-api-svc
+            port:
+              number: 8080
+

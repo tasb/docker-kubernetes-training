@@ -4,10 +4,10 @@ On this lab you'll start to have contact with docker CLI and container lifecycle
 
 ## On this lab
 
-- [Initial steps](README.md#initial-steps)
-- [Play with a container](README.md#play-with-a-container)
-- [Run an App](README.md#run-an-app)
-- [Windows Containers](README.md#windows-containers)
+- [Initial steps](lab01.md#initial-steps)
+- [Play with a container](lab01.md#play-with-a-container)
+- [Run an App](lab01.md#run-an-app)
+- [Windows Containers](lab01.md#windows-containers)
 
 ## Initial steps
 

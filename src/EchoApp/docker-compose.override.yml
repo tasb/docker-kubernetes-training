@@ -1,17 +1,29 @@
 version: '3'
 services:
+  echo-bd:
+    environment:
+      - SA_PASSWORD=P@ssw0rd
+      - ACCEPT_EULA=Y
+    ports:
+      - "5000:1433"
+
   echo-webapp:
     ports:
       - "8080:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
       - EchoAPIServer=echo-api
 
   echo-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=echo-bd,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd;
     ports:
         - "9000:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
     volumes:
       - ./.vsdbg:/remote_debugger:rw
 

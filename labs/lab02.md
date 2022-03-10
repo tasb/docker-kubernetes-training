@@ -4,10 +4,10 @@ On this lab you'll create your first image using a Dockerfile and publish on a p
 
 ## On this lab
 
-- [Prerequisites](README.md#prerequisites)
-- [Simple Dockerfile](README.md#simple-dockerfile)
-- [Multi-stage Dockerfile](README.md#multi-stage-dockerfile)
-- [Publish an Image](README.md#publish-an-image)
+- [Prerequisites](lab02.md#prerequisites)
+- [Simple Dockerfile](lab02.md#simple-dockerfile)
+- [Multi-stage Dockerfile](lab02.md#multi-stage-dockerfile)
+- [Publish an Image](lab02.md#publish-an-image)
 
 ## Prerequisites
 
