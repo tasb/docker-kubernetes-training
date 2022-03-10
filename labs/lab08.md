@@ -100,7 +100,7 @@ You may check that the path `/run/desktop/mnt/host/c/EchoAppData` may seems a li
 Then apply this file with the following command.
 
 ```bash
-kubectl apply -f echo-app-pv.yaml -n echo-app-ns
+kubectl apply -f echo-app-pv.yaml
 ```
 
 Now you need a Persistent Volume Claim to integrate this volume with your pods.
@@ -122,6 +122,12 @@ spec:
 ```
 
 Since you use `storageClassName: local-storage` and the amount of storage requested `storage: 3Gi` is smaller that `10Gi` defined on the volume, you should get a bound between this claim and the previously created volume.
+
+Then apply this file with the following command.
+
+```bash
+kubectl apply -f echo-app-pvc.yaml -n echo-app-ns
+```
 
 Let's check if the bound was created properly. Get Persistent Volume Claim list to check the status.
 
