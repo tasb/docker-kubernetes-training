@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-dotnet
+spec:
+  selector:
+    matchLabels:
+      run: hpa-dotnet
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: hpa-dotnet
+    spec:
+      containers:
+      - name: hpa-dotnet
+        image: tasb/hpa-dotnet-sample:v1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 300m
+          requests:
+            cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa-dotnet-svc
+  labels:
+    run: hpa-dotnet
+spec:
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    run: hpa-dotnet

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-generator
+spec:
+  selector:
+    matchLabels:
+      run: load-generator
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        run: load-generator
+    spec:
+      containers:
+      - name: load-generator
+        image: tasb/load-generator:env
+        imagePullPolicy: Always
+        env:
+          - name: URL_TEST
+            value: 'http://hpa-dotnet-svc:8080/load'
