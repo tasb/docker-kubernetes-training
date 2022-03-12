@@ -455,8 +455,6 @@ echo-db-dep-54cff96b58-tjqbv   1/1     Running   1 (5m59s ago)   4h30m
 
 To confirm that you have the same logs, navigate to <http://localhost/api/logs> and check the list is the same that you got previously.
 
-## Next Lab
-
-### [Monitoring and Operation >](lab09.md)
+## Next Lab: [Monitoring and Operation >](lab09.md)
 
 [Return home >](../README.md#labs)

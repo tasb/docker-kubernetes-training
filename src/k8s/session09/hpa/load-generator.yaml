@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       run: load-generator
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:
