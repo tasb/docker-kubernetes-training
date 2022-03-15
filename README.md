@@ -74,7 +74,8 @@ Get access to the content used to share Kubernetes concepts during sessions.
 6. [Deployments & ReplicaSets](slides/Session06.pdf)
 7. [Kubernetes services](slides/Session07.pdf)
 8. [Storage in Kubernetes](slides/Session08.pdf)
-9. Monitoring and Operation
+9. [Monitoring and Operation](slides/Session09.pdf)
+10. [Mini project](slides/Session10.pdf)
 
 ## Feedback
 
