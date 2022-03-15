@@ -121,13 +121,13 @@ This code means that you may define the default value for the environment variab
 To create the reader image use the next `docker build` command.
 
 ```bash
-docker build -f .\Dockerfile.reader --build-arg "LOG_FILE=/share/data.log" -t busybox-logger:reader .
+docker build -f Dockerfile.reader --build-arg "LOG_FILE=/share/data.log" -t busybox-logger:reader .
 ```
 
 To create the reader image use the next `docker build` command.
 
 ```bash
-docker build -f .\Dockerfile.writer --build-arg "LOG_FILE=/share/data.log" -t busybox-logger:writer .
+docker build -f Dockerfile.writer --build-arg "LOG_FILE=/share/data.log" -t busybox-logger:writer .
 ```
 
 Run `docker images` command to check if the images were created properly.

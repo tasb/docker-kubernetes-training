@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
+LABEL turma=2
+WORKDIR /app
+EXPOSE 80
+
+ENV ASPNETCORE_URLS=http://+:80
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
+WORKDIR "/src/echo-api"
+COPY ["echo-api.csproj", "."]
+
+RUN dotnet restore "echo-api.csproj"
+COPY . .
+RUN dotnet build "echo-api.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "echo-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "echo-api.dll"]

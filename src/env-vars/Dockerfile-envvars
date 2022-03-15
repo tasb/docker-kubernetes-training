@@ -1,5 +1,0 @@
-FROM alpine
-
-ENV ECHO_MSG="Default message"
-
-CMD echo "${ECHO_MSG}"
