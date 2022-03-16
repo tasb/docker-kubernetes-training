@@ -253,7 +253,7 @@ When you have details from every pod you should see an output like this.
 
 ```bash
 NAME                              CPU(cores)   MEMORY(bytes)
-hpa-dotnet-7bbb5c64cd-hnsph       496m         23Mi
+hpa-sample-7bbb5c64cd-hnsph       496m         23Mi
 load-generator-76f879f6c8-9ghzg   26m          0Mi
 load-generator-76f879f6c8-kvjkw   26m          0Mi
 load-generator-76f879f6c8-lz5rk   28m          0Mi
@@ -325,7 +325,7 @@ After some minutes you should get an output like this.
 
 ```bash
 NAME         REFERENCE               TARGETS     MINPODS   MAXPODS   REPLICAS   AGE
-hpa-dotnet   Deployment/hpa-dotnet   239m/250m   2         12        9          7m57s
+hpa-sample   Deployment/hpa-sample   239m/250m   2         12        9          7m57s
 ```
 
 Notice that `TARGETS` column describe `actual/desired` metric value.
@@ -360,7 +360,7 @@ You should get an output similar with this.
 
 ```bash
 NAME         REFERENCE               TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
-hpa-dotnet   Deployment/hpa-dotnet   52m/250m   2         12        9          29m
+hpa-sample   Deployment/hpa-sample   52m/250m   2         12        9          29m
 ```
 
 You may notice that actual metric value decreased a lot but you still have 9 replicas.
@@ -383,7 +383,7 @@ Getting an output like this.
 
 ```bash
 NAME         REFERENCE               TARGETS     MINPODS   MAXPODS   REPLICAS   AGE
-hpa-dotnet   Deployment/hpa-dotnet   157m/250m   2         12        3          34m
+hpa-sample   Deployment/hpa-sample   157m/250m   2         12        3          34m
 ```
 
 ## Cleanup Cluster
