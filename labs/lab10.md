@@ -23,14 +23,15 @@ Then, confirm that you have Docker and Kubernetes cluster running on your machin
 
 On this lab you'll have the following goals:
 
-- Create Dockerfiles for webapp and api
-- Push to Docker hub
-- Create Kubernetes Manifests
+- **Create Dockerfiles for webapp and api**
+- **Create Docker compose scripts**
+- **Push to Docker hub**
+- **Create Kubernetes Manifests**
   
-  - Deployments
-  - Services
-  - PersistentVolume and PersistentVolumeClaim
-  - ConfigMaps and Secrets
+  - **Deployments**
+  - **Services**
+  - **PersistentVolume and PersistentVolumeClaim**
+  - **ConfigMaps and Secrets**
 
 ## Todo App Components
 
