@@ -25,6 +25,6 @@ services:
       restart_policy:
         condition: on-failure
     volumes:
-      - ./.vsdbg:/remote_debugger:rw
+      - ~/.vsdbg:/remote_debugger:rw
 
     

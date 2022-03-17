@@ -19,11 +19,9 @@ Did you managed to get the command? If not, click on below link.
 
 <details>
   <summary>Click to see the command</summary>
-  
-  ```bash
+  <code>
   docker run -dp 8080:80 docker/getting-started
-  ```
-
+  </code>
 </details>
 
 ## Run the lab
