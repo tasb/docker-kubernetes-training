@@ -14,15 +14,6 @@ On this lab you'll see how HPA works and have look into Kubernetes Dashboard.
 
 ## Prepare your cluster
 
-To make this lab faster, let's change a configuration on our cluster.
-
-Stop your `minikube` cluster.
-
-```bash
-minikube stop
-```
-
-
 **If you already have done this on [Lab05](lab05.md#pod-advanced-configuration) you may skip this step.**
 
 Before you're able to use HPA and Kubernetes Dashboard, you need to have Metrics server running inside your cluster.
