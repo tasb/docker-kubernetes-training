@@ -13,7 +13,9 @@ On this lab you'll create your first image using a Dockerfile and publish on a p
 
 To complete this lab you need to create (if you don't have already) a Docker account to allow you to push your image to a public registry.
 
-Navigate to <https://hub.docker.com/signup> to create your account. You need to recall you Docker ID that you'll need later on this lab.
+Navigate to <https://hub.docker.com/signup> to create your account.
+
+Please copy your **`Docker ID`** that you'll need later on this lab when pushing the image to Docker Hub.
 
 ## Simple Dockerfile
 
@@ -226,7 +228,33 @@ Now you're ready to push your image to your public Docker Hub registry.
 docker push <DOCKER_ID>/my-echo-api:v1
 ```
 
+You may get an unauthorized error since you need to login into your docker account.
+
+Run login command and enter your credentials that are your `DOCKER_ID` and password.
+
+```bash
+docker login
+```
+
+Ypu should get an output like this (after entering your credentials).
+
+```bash
+Login with your Docker ID to push and pull images from Docker Hub. If you dont have a Docker ID, head over to https://hub.docker.com to create one.
+Username: DOCKER_ID
+Password:
+
+Login Succeeded
+```
+
 After push is finished you may test if your image is properly available.
+
+Before you need to remove it from your local cache to make sure you are using the image published on docker.
+
+```bash
+docker rmi <DOCKER_ID>/my-echo-api:v1
+```
+
+Finally you may run a container using your published image.
 
 ```bash
 docker run -d -p 9000:80 <DOCKER_ID>/my-echo-api:v1

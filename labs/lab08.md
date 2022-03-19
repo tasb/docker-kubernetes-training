@@ -15,14 +15,10 @@ On this lab you'll use Persistent Volumes, ConfigMaps and Secret for a full conf
 
 **You should follow this step if you didn't finish [previous lab](/lab07.md) or cleared your cluster after that.**
 
-You need to install an ingress controller on your cluster.
-
-On this example, you'll use [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/).
-
-To install you need to run a Kubernetes manifest on your cluster. Run the following command.
+Then create your first ingress, you need to install an ingress controller on your cluster.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+minikube addons enable ingress
 ```
 
 You need to check if ingress controller is already available on your cluster.
@@ -66,8 +62,6 @@ EchoApp will use a Database to keep record of requests that the API received.
 
 To have a proper database you need to have a persistent volume to keep the database files.
 
-Start to create a folder to keep those file. Create a folder called `C:/EchoAppData` on your machine.
-
 Next, let's create the persistent volume. Add new file named `echo-app-pv.yaml` and add the following content.
 
 ```yaml
@@ -82,20 +76,9 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
-  local:
-    path: /run/desktop/mnt/host/c/EchoAppData
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - docker-desktop
+  hostPath:
+    path: /data/EchoAppData
 ```
-
-You may check that the path `/run/desktop/mnt/host/c/EchoAppData` may seems a little strange but is the way Docker Desktop recognize a folder on your machine.
 
 Then apply this file with the following command.
 
@@ -113,7 +96,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: echo-app-pv-claim
 spec:
-  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:
@@ -121,7 +103,7 @@ spec:
       storage: 3Gi
 ```
 
-Since you use `storageClassName: local-storage` and the amount of storage requested `storage: 3Gi` is smaller that `10Gi` defined on the volume, you should get a bound between this claim and the previously created volume.
+Since amount of storage requested `storage: 3Gi` is smaller that `10Gi` defined on the volume, you should get a bound between this claim and the previously created volume.
 
 Then apply this file with the following command.
 

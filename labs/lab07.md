@@ -75,6 +75,14 @@ echo-webapp-dep   3/3     3            3           18s
 
 Now you should create the services to get access to your Echo App.
 
+To have external access to `LoadBalancer` services on `minikube` you need to create a tunnel between cluster and your machine.
+
+Open a new terminal and run the following command. This terminal needs to be open until the end of this lab.
+
+```bash
+minikube tunnel
+```
+
 First, create a file called `echo-api-svc.yaml` and add the following content.
 
 ```yaml
@@ -141,19 +149,17 @@ Now your already have your frontend and backend available from outside of your c
 
 ## Define ingress
 
-To have a better definition of your app, since you don't want to access your webapp and api on different ports.
+Regarding production environment you don't want to have services accessed directly on different port.
 
-Before create your first ingress, you need to install an ingress controller on your cluster.
+To better handle external communication with your cluster, let's create an ingress controller.
 
-On this example, you'll use [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/).
+First you need to turn off `minikube tunnel`. Go to terminal where you run that command and press `Ctrl-c`.
 
-To install you need to run a Kubernetes manifest on your cluster. Run the following command.
+Then create your first ingress, you need to install an ingress controller on your cluster.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+minikube addons enable ingress
 ```
-
-With this command you learn that you may use an http URL on the `kubectl apply` command.
 
 You need to check if ingress controller is already available on your cluster.
 
@@ -187,6 +193,14 @@ kubectl apply -f echo-webapp-svc.yaml -n echo-app-ns
 kubectl apply -f echo-api-svc.yaml -n echo-app-ns
 ```
 
+Let's check that services type have changed to `ClusterIP`.
+
+```bash
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+echo-api-svc      ClusterIP   10.97.110.110   <none>        8080/TCP   8m33s
+echo-webapp-svc   ClusterIP   10.96.27.91     <none>        9000/TCP   7m12s
+```
+
 Let's create the ingress. Create a file called `echo-app-ingress.yaml` and add the following content.
 
 ```yaml
@@ -199,10 +213,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: localhost
+  - host: echo-app.ingress.test
     http:
       paths:
-      - path: /
+      - path: /(.*)
         pathType: Prefix
         backend:
           service:
@@ -220,10 +234,18 @@ spec:
 
 With this ingress you will get:
 
-- Requests to <http://localhost/> will be forward to `echo-webapp-svc` service
-- Requests to <http://localhost/api/echo/message> will be forward to `echo-api-svc` service
+- Requests to <http://echo-app.ingress.test/> will be forward to `echo-webapp-svc` service
+- Requests to <http://echo-app.ingress.test/api/echo/message> will be forward to `echo-api-svc` service
 
 Let's dive on the ingress file.
+
+You have set an URL on `host` property.
+
+```yaml
+- host: echo-app.ingress.test
+```
+
+This means that the requests for this URL will be handle by this ingress.
 
 On API path you have this definition.
 
@@ -254,11 +276,32 @@ You can check if you ingress is properly configured running this command.
 kubectl describe ingress echo-app-ingress -n echo-app-ns
 ```
 
+You need an additional step to make everuthing working. First, let's get the ingress IP.
+
+```bash
+kubectl get ingress echo-app-ingress -n echo-app-ns
+```
+
+You should get an output like this.
+
+```bash
+NAME               CLASS   HOSTS                   ADDRESS        PORTS   AGE
+echo-app-ingress   nginx   echo-app.ingress.test   192.168.49.2   80      6m
+```
+
+The IP you need is on `ADDRESS` column.
+
+You need to change `hosts` file on your machine to have a match between URL defined on the ingress and this IP.
+
+```bash
+sudo sh -c 'echo "192.168.49.2\techo-app.ingress.test\n" >> /etc/hosts'
+```
+
 Finally, let's test if everything is working properly.
 
-Navigate to <http://localhost> and you should see Echo App Webapp.
+Navigate to <http://echo-app.ingress.test/> and you should see Echo App Webapp.
 
-Then navigate to <http://localhost/api/echo/message> and you should receive `"message"` as output.
+Then navigate to <http://echo-app.ingress.test/api/echo/message> and you should receive `"message"` as output.
 
 On webapp, if you fill the input box with same text and click on `Make Echo!` button, you should see an error.
 
