@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: sample-pv-claim
 spec:
-  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:

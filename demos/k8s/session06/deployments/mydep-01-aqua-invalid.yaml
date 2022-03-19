@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: workload
-          image: nginx:1.18
+          image: nginx:1.18-pine
           ports:
             - containerPort: 80

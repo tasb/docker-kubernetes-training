@@ -9,4 +9,4 @@ data:
   user-interface.properties: |
     color.good=purple
     color.bad=yellow
-    allow.textmode=false
+    allow.textmode=true
