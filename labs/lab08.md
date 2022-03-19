@@ -395,9 +395,9 @@ kubectl get all -n echo-app-ns
 
 After you check that your pods are running, you can test your application.
 
-Navigate to <http://localhost> and have access to WebApp. On the page try your application adding some text on the input text and click on 'Make echo!' button. You may do this several times.
+Navigate to <http://echo-app.ingress.test> and have access to WebApp. On the page try your application adding some text on the input text and click on 'Make echo!' button. You may do this several times.
 
-Then to check if your are keeping the logs properly, navigate to <http://localhost/api/logs> and have a access to a list (on JSON format) with all the requests that you've done.
+Then to check if your are keeping the logs properly, navigate to <http://echo-app.ingress.test/api/logs> and have a access to a list (on JSON format) with all the requests that you've done.
 
 ## Restart Database
 
@@ -435,7 +435,7 @@ NAME                           READY   STATUS    RESTARTS        AGE
 echo-db-dep-54cff96b58-tjqbv   1/1     Running   1 (5m59s ago)   4h30m
 ```
 
-To confirm that you have the same logs, navigate to <http://localhost/api/logs> and check the list is the same that you got previously.
+To confirm that you have the same logs, navigate to <http://echo-app.ingress.test/api/logs> and check the list is the same that you got previously.
 
 ## Next Lab: [Monitoring and Operation >](lab09.md)
 

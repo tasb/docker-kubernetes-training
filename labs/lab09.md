@@ -14,7 +14,16 @@ On this lab you'll see how HPA works and have look into Kubernetes Dashboard.
 
 ## Prepare your cluster
 
-<span style="color:red">If you already have done this on [Lab05](lab05.md#pod-advanced-configuration) you may skip this step.</span>
+To make this lab faster, let's change a configuration on our cluster.
+
+Stop your `minikube` cluster.
+
+```bash
+minikube stop
+```
+
+
+**If you already have done this on [Lab05](lab05.md#pod-advanced-configuration) you may skip this step.**
 
 Before you're able to use HPA and Kubernetes Dashboard, you need to have Metrics server running inside your cluster.
 
@@ -22,12 +31,17 @@ Usually when you're using a full Kubernetes cluster this step is ot need as Metr
 
 Since you're using local Kubernetes cluster you need to install it.
 
-Create a file called `metrics-server.yaml` and add the content available on [this link](https://gist.github.com/tasb/4667515a028f929af3a6a18d609d0c82).
-
-Then you need to apply it:
+You need to enable metrics server on your cluster.
 
 ```bash
-kubectl apply -f metrics-server.yaml
+minikube addons enable metrics-server
+```
+
+You should get this output.
+
+```bash
+    ▪ Using image k8s.gcr.io/metrics-server/metrics-server:v0.4.2
+🌟  The 'metrics-server' addon is enabled
 ```
 
 This component may take some time to be ready. To test if it's working properly execute the following command.
@@ -39,8 +53,8 @@ kubectl top nodes
 When everything is working properly you should get an output like this.
 
 ```bash
-NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-docker-desktop   238m         2%     2396Mi          30%
+NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube   255m         3%     4Mi             0%
 ```
 
 ## Create Sample App
@@ -157,69 +171,47 @@ kubectl get all -n hpa-sample
 
 ## Enable Kubernetes Dashboard
 
-Enabling Kubernetes Dashboard means applying a deployment to your cluster.
+Kubernetes Dashboard allow you to have a GUI to monitor your cluster.
 
-To be able to have access to data on that dashboard you need to create an user with admin privileges on the cluster and using a login token from it.
-
-To speed up this steps uou may find scripts that do all the steps for you on following links:
-
-- If you're using Windows, you have a Powershell script on this [link](https://gist.githubusercontent.com/tasb/023bb87949c430ce3b8eed35e47e54b7/raw/f3470ca18bbf27652b8e125984bdda7a4b3dd7c1/dashboard.ps1)
-- If you're using Windows, you have a bash script on this [link](https://gist.githubusercontent.com/tasb/be560770b580e81afde36abb00b5d344/raw/2a51c2163702cb7becf35f5d37b29bbeb0602e45/dashboard.sh)
-
-After create a script on your computer, run that script. You should get an output like this.
+To enable it you need to run the following command.
 
 ```bash
-namespace/kubernetes-dashboard configured
-serviceaccount/kubernetes-dashboard configured
-service/kubernetes-dashboard configured
-secret/kubernetes-dashboard-certs configured
-secret/kubernetes-dashboard-csrf configured
-secret/kubernetes-dashboard-key-holder configured
-configmap/kubernetes-dashboard-settings configured
-role.rbac.authorization.k8s.io/kubernetes-dashboard configured
-clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard configured
-rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard configured
-clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard configured
-deployment.apps/kubernetes-dashboard configured
-service/dashboard-metrics-scraper configured
-deployment.apps/dashboard-metrics-scraper configured
-serviceaccount/admin-user configured
-clusterrolebinding.rbac.authorization.k8s.io/admin-user configured
-
-Use this token on Kubernetes Dashboard
-
---------------------------------------------------------------
-
-eyJhbGciOiJSUzI1NiIsImtpZCI6IkM4MzBuVUJrSzNabjJfVUpWdkVpTDBETEd0NG9RaEswYmoya29taU1PTHcifQ......
-
---------------------------------------------------------------
+minikube addons enable dashboard
 ```
 
-Copy the token (the value between `--------------------------------------------------------------` lines) that you will need to login on Kubernetes Dashboard.
-
-To have access to Kubernetes Dashboard you need to open a proxy between your machine and Kubernetes API server.
-
-To do that `kubectl` has a command to speed up the process. Run the following command on your command line to create (be aware that your command line will be blocked by this command).
+You should get an output like this.
 
 ```bash
-kubectl proxy
+    ▪ Using image kubernetesui/dashboard:v2.3.1
+    ▪ Using image kubernetesui/metrics-scraper:v1.0.7
+💡  Some dashboard features require the metrics-server addon. To enable all features please run:
+
+        minikube addons enable metrics-server
+
+
+🌟  The 'dashboard' addon is enabled
 ```
 
-After that, open a browser window and navigate to <http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/>.
+To get access to the dasboard active it using the next command.
 
-You should get access to a login page like this one.
+```bash
+minikube dashboard --url
+```
 
-![Kubernetes Dashboard Login](images/lab09/image01.png "Kubernetes Dashboard Login")
+You should get an output like this.
 
-On this login page you have to enter the token you copied previously on input text with `Enter token *` placeholder.
+```bash
+🤔  Verifying dashboard health ...
+🚀  Launching proxy ...
+🤔  Verifying proxy health ...
+http://127.0.0.1:37653/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+```
 
-Click on `Sign In` button and you should get a dashboard like this.
-
-![Kubernetes Dashboard](images/lab09/image02.png "Kubernetes Dashboard")
+After that, open a browser window and navigate to the url returned on last command. You need to keep this terminal open to continue having access to the dashboard.
 
 To get metrics from `hpa-sample` namespace you need to change to that namespace on namespace selector on top of Kubernetes Dashboard.
 
-![Kubernetes Dashboard  Namespace Selector](images/lab09/image03.png "Kubernetes Dashboard Namespace Selector")
+![Kubernetes Dashboard  Namespace Selector](images/lab09/image01.png "Kubernetes Dashboard Namespace Selector")
 
 Leave this browser window open that could allow you to see the behavior of your cluster when you start to add more load to it.
 
@@ -268,7 +260,7 @@ Let's create an HPA that allow this deployment to have better performance due to
 Create a file called `hpa.yaml` and add the following content.
 
 ```yaml
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-sample
