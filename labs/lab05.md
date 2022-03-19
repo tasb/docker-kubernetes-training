@@ -15,9 +15,13 @@ On this lab you'll have a first hands-on experience with Kubernetes.
 
 Before you start this lab you need to make sure you have your machine ready to use a Kubernetes dev cluster.
 
-First, ensure you enable Kubernetes option on Docker Desktop. You have more details [here](https://docs.docker.com/desktop/kubernetes/#enable-kubernetes)
+First, enable `minikube` cluster on your machine.
 
-When you enable this feature, `kubectl`is automatically added to your path. Let's confirm it's working properly
+```bash
+minikube start --extra-config=kubelet.housekeeping-interval="10s"
+```
+
+When you start `minikube` cluster, `kubectl` is automatically configured. Let's confirm it's working properly.
 
 ```bash
 kubectl version
@@ -48,14 +52,14 @@ To have direct access to current context you may run the following command.
 kubectl config current-context
 ```
 
-If the output of this command is nor `docker-desktop`, you need to change your current context.
+If the output of this command is not `minikube`, you need to change your current context.
 
 ```bash
-kubectl config use-context docker-desktop
+kubectl config use-context minikube
 kubectl config current-context
 ```
 
-Now you should get `docker-desktop` as the output of last commands.
+Now you should get `minikube` as the output of last commands.
 
 ## Run your first pod
 
@@ -66,6 +70,21 @@ We'll use a previously created image during containers labs.
 ```bash
 kubectl run my-simple-site --image=tasb/hello-static-site --port=80 
 ```
+
+Let's list all running pods to check if your pod is running properly.
+
+```bash
+kubectl get pods
+```
+
+You should get the following outpur.
+
+```bash
+NAME             READY   STATUS    RESTARTS   AGE
+my-simple-site   1/1     Running   0          42s
+```
+
+On `STATUS` column you need to have `RUNNING` value.
 
 Now let's interact with our website.
 
@@ -162,14 +181,17 @@ kubectl delete pod my-simple-website
 
 Now you'll create a more complex pod with additional configuration.
 
-First, if you are using docker-desktop Kubernetes you need to take a initial step to enable metrics server.
-
-Create a file called `metrics-server.yaml` and add the content available on [this link](https://gist.github.com/tasb/4667515a028f929af3a6a18d609d0c82).
-
-Then you need to apply it:
+First, if you need to enable metrics server on your cluster.
 
 ```bash
-kubectl apply -f metrics-server.yaml
+minikube addons enable metrics-server
+```
+
+You should get this output.
+
+```bash
+    ▪ Using image k8s.gcr.io/metrics-server/metrics-server:v0.4.2
+🌟  The 'metrics-server' addon is enabled
 ```
 
 This component may take some time to be ready. To test if it's working properly execute the following command.
@@ -181,8 +203,8 @@ kubectl top nodes
 When everything is working properly you should get an output like this.
 
 ```bash
-NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-docker-desktop   238m         2%     2396Mi          30%
+NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube   255m         3%     4Mi             0%
 ```
 
 Now you need to create a file called `vote-app.yaml` with the following content. You need to be careful when add content to the file since whitespace have semantic value on YAML.
@@ -203,10 +225,10 @@ spec:
           value: "yes"
       resources:
         limits:
-          cpu: "1"
+          cpu: 1000m
           memory: "1G"
         requests:
-          cpu: "0.5"
+          cpu: 500m
           memory: "500M"
     - name: azure-vote-front
       image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
@@ -217,10 +239,10 @@ spec:
           value: localhost
       resources:
         limits:
-          cpu: "1"
+          cpu: 1000m
           memory: "1G"
         requests:
-          cpu: "0.5"
+          cpu: 500m
           memory: "500M"
 ```
 

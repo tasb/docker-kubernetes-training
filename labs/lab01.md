@@ -163,7 +163,7 @@ docker ps
 And now the list of all containers
 
 ```bash
-docker ps -q 
+docker ps -a
 ```
 
 If you need another instance you can start again the initial container

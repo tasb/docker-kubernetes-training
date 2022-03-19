@@ -13,9 +13,9 @@ Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access 
 
 ## Prerequisites
 
-To be able to perform the labs describe on this repo you may have the following software installed on your machine
+To perform the labs on this repo you need to have the following software installed on your machine.
 
-### Prerequisites - Windows
+<!-- ### Prerequisites - Windows
 
 1. Windows 10+ (Windows 11 is recommended)
 2. [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
@@ -29,7 +29,7 @@ To be able to perform the labs describe on this repo you may have the following 
     - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
     - [Docker compose](https://marketplace.visualstudio.com/items?itemName=p1c2u.docker-compose)
     - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
-    - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+    - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) -->
 
 ### Prerequisites - Ubuntu
 
@@ -44,6 +44,8 @@ To be able to perform the labs describe on this repo you may have the following 
     - [Docker compose](https://marketplace.visualstudio.com/items?itemName=p1c2u.docker-compose)
     - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
     - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+
+This stop works on top of [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 ## Labs
 

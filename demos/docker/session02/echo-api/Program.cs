@@ -1,6 +1,4 @@
 using System.Net;
-using echo_api.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Console;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,16 +22,9 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
     });
 
-builder.Services.AddDbContext<EchoHistoryDb>(opt => opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-
 var app = builder.Build();
 
 app.UseCors("CorsPolicy");
-
-using (var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<EchoHistoryDb>())
-{
-    context.Database.Migrate();
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -42,20 +33,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.MapGet("/echo/{message}", (string message) =>
-// {
-//     string logMessage = string.Format("Echoing message: {0}", message);
-//     app.Logger.LogInformation(logMessage);
-//     return Results.Ok(message);
-// })
-// .WithName("Echo");
-
-app.MapGet("/echo/{message}", (string message, EchoHistoryDb db) =>
+app.MapGet("/echo/{message}", (string message) =>
 {
     string logMessage = string.Format("Echoing message: {0}", message);
     app.Logger.LogInformation(logMessage);
-    db.EchoLogs.Add(new EchoHistory { Message = logMessage });
-    db.SaveChanges();
     return Results.Ok(message);
 })
 .WithName("Echo");
@@ -67,11 +48,5 @@ app.MapGet("/hostname", () =>
     return Results.Ok(hostname);
 })
 .WithName("Hostname");
-
-app.MapGet("/logs", (EchoHistoryDb db) =>
-{
-    return db.EchoLogs.ToList();
-})
-.WithName("GetLog");
 
 app.Run();

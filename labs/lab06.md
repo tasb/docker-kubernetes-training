@@ -78,6 +78,8 @@ Let's check the new pods. If you are fast enough you may see new pods to be crea
 kubectl get pods --show-labels
 ```
 
+You may notice that new pods are being created (`STATUS`with value `ContainerCreating`) and older pods are being terminated (`STATUS`with value `Terminating`)
+
 Take the name of one of the pods to check if the image was changed. Use that name on next command.
 
 ```bash
@@ -162,7 +164,13 @@ kubectl rollout undo deploy mydep --to-revision=1
 
 You must see `version=v1`on pod's labels list.
 
-And you're done working with deployments. Next you'll see how you can work with this deployments as a unique object.
+And you're done working with deployments. Let's cleanup your cluster.
+
+```bash
+kubectl delete deployment mydep
+```
+
+Next you'll see how you can work with this deployments as a unique object.
 
 ## Next Lab: [Managing services >](lab07.md)
 
