@@ -4,7 +4,7 @@ metadata:
   name: bad-image
 spec:
   containers:
-  - image: nginx:1.18-pine
+  - image: nginx:1.18-alpine
     name: nginx-container
     ports:
     - containerPort: 80
