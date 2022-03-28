@@ -270,6 +270,16 @@ Now it's time to apply the ingress on your cluster.
 kubectl apply -f echo-app-ingress.yaml -n echo-app-ns
 ```
 
+Now you need to restart the tunnel to get an IP on your ingress.
+
+Run `minikube` command to start the tunnel.
+
+```bash
+minikube tunnel
+```
+
+Notice if the tunnel ask to enter `sudo`password since you're using reserved `80` port.
+
 You can check if you ingress is properly configured running this command.
 
 ```bash

@@ -263,10 +263,10 @@ You use `localhost` as value since the two containers communicate using IPC (Int
 ```yaml
 resources:
   limits:
-    cpu: "1"
+    cpu: 1000m
     memory: "1G"
   requests:
-    cpu: "0.5"
+    cpu: 500m
     memory: "500M"
 ```
 
