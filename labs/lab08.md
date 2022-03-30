@@ -73,6 +73,7 @@ spec:
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
+  storageClassName: standard
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -98,6 +99,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: standard
   resources:
     requests:
       storage: 3Gi

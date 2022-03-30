@@ -6,6 +6,7 @@ spec:
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
+  storageClassName: standard
   accessModes:
   - ReadWriteOnce
   hostPath:

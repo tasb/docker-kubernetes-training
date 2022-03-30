@@ -27,8 +27,8 @@ spec:
           volumeMounts:
           - name: tempvol
             mountPath: /usr/share/nginx/html
-          - mountPath: /share/somefile
-            name: hostfolder
+          - name: hostfolder 
+            mountPath: /share/somefile
             readOnly: true
       volumes:
       - name: tempvol
