@@ -1,0 +1,5 @@
+docker build -f Dockerfile.multi -t echo-api:multi .
+
+docker run -d -p 9090:80 echo-api:multi
+
+curl http://localhost:9090/echo/teste

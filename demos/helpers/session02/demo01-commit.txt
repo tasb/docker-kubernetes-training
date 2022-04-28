@@ -1,0 +1,30 @@
+docker run -d --rm --name mynginx nginx 
+
+docker exec -it mynginx bash
+
+-> navigate inside container
+
+=========================================
+
+docker run --name mycycle tasb/busybox-cycle
+
+docker ps
+
+docker ps -a
+
+docker exec -it mycycle sh
+
+==========================================
+
+docker commit mycycle broken-cycle
+
+docker images
+
+docker run -it  broken-cycle sh
+
+ls
+
+cat log.txt
+
+==========================================
+

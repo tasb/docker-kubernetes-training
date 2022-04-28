@@ -1,0 +1,29 @@
+docker build -f Dockerfile-envvars -t my-echo:alpine .
+
+docker run my-echo:alpine
+
+docker run -e "ECHO_MSG=Cmd message" my-echo:alpine
+
+=============================================================
+
+docker run -it -p 8000:80 tasb/echo-api:turmaX
+
+docker run -it -p 8080:80 -e "Logging__LogLevel__Default=Debug" -e "Logging__LogLevel__Microsoft.AspNetCore=Debug" tasb/echo-api:turmaX
+
+curl http://localhost:8000/echo/hello
+
+curl http://localhost:8080/echo/hello
+
+
+=============================================================
+
+docker build -f Dockerfile-buildargs --build-arg DEFAULT_MSG="Default message from cmd" -t build-args:alpine .
+
+docker run build-args:alpine
+
+docker run -e "ECHO_MSG=new message" build-args:alpine
+
+export ECHO_MSG="Message from host env"
+docker run -e ECHO_MSG build-args:alpine
+
+docker run --env-file=.env build-args:alpine

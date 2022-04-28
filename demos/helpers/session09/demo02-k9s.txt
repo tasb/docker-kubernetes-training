@@ -1,0 +1,8 @@
+k9s
+
+: -> move to resources
+
+? -> get shortcuts
+
+/ -> filter resouces
+

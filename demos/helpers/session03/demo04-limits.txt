@@ -1,0 +1,5 @@
+docker run -it myubuntu stress-ng --cpu 2 --metrics-brief
+
+docker stats
+
+docker run -it --cpus 0.5 myubuntu stress-ng --cpu 2 --metrics-brief

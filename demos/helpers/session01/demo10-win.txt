@@ -1,0 +1,24 @@
+docker run -it alpine /bin/sh
+
+uname -r
+exit
+
+==========================================================
+Change to Windows
+
+docker run -it mcr.microsoft.com/windows/servercore:ltsc2022 Powershell
+hostname
+dir c:/windows
+
+docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 Powershell
+docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd
+dir c:/windows
+
+docker run -it --rm -p 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
+
+docker run -d -p 8000:80 mcr.microsoft.com/dotnet/samples:aspnetapp
+
+==========================================================
+Change to Linux
+
+docker run -d -p 9000:80 mcr.microsoft.com/dotnet/samples:aspnetapp

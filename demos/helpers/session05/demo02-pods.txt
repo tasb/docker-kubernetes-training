@@ -1,0 +1,69 @@
+kubectl run my-pod --image=nginx --port=80
+
+kubectl get pods
+
+kubectl describe pod my-pod
+
+kubectl delete pod my-pod
+
+kubectl apply -f pod.yaml
+
+kubectl get pods
+
+kubectl get pod nginx-pod -o yaml
+
+kubectl apply -f bad-image.yaml
+
+kubectl get pods
+
+kubectl describe pod/bad-image
+
+---> fix bad-image.yaml
+
+kubectl apply -f bad-image.yaml
+
+kubectl get pods
+
+kubectl apply -f double-container.yml
+
+kubectl get pods
+
+kubectl exec -it nginx-pod -- sh
+
+kubectl exec -it redis-nginx -c frontend -- bash
+
+kubectl exec -it redis-nginx -- bash
+
+apt-get update
+
+apt-get install -y curl procps
+
+curl localhost
+
+kubectl port-forward nginx-pod 8080:80
+
+kubectl port-forward redis-nginx 8080:80
+
+==============================================================
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl top pod cpu-demo 
+
+--> uncomment limits and resources 
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl delete pod cpu-demo
+
+kubectl apply -f pod-with-resources.yaml
+
+kubectl top pod cpu-demo
+
+==============================================================
+
+kubectl apply -f pod-with-high-resources.yaml
+
+kubectl get pods
+
+kubectl describe pod no-resources-pod

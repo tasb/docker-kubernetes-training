@@ -1,0 +1,12 @@
+kubectl apply -f nginx-dep.yaml
+
+kubectl apply -f ingress.yaml
+
+curl http://ingress.test/
+
+curl http://ingress.test/nginx
+
+kubectl delete --all deployments
+kubectl delete --all services
+kubectl delete --all ingress
+

@@ -1,0 +1,27 @@
+docker run -it --mount type=bind,source=/tmp/data,target=/share alpine sh
+
+mkdir /tmp/data
+
+docker run -it --mount type=bind,source=/tmp/data,target=/share alpine sh
+
+docker run -it --mount type=bind,source=/tmp/data,target=/share,readonly alpine sh
+
+==================================================
+
+docker volume create my-volume
+
+docker inspect my-volume
+
+docker volume ls
+
+docker run -it --mount source=my-volume,target=/share alpine sh
+
+docker run -it --mount source=my-volume,target=/share,readonly alpine sh
+
+docker volume rm my-volume
+
+docker container prune
+
+docker volume rm my-volume
+
+docker volume ls

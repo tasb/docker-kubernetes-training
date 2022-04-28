@@ -1,0 +1,25 @@
+kubectl create ns ns-labels
+
+kubectl apply -f pod-with-labels.yaml
+
+kubectl get pods -n ns-labels
+
+kubectl get pods -n ns-labels --show-labels
+
+kubectl get pods -n ns-labels --selector=app=myapp
+
+kubectl apply -f other-pod-with-labels.yaml
+
+kubectl get pods -n ns-labels --show-labels
+
+kubectl get pods -n ns-labels --selector=app=myapp --show-labels
+
+kubectl get pods -n ns-labels --selector=tier=front --show-labels
+
+kubectl get pods -n ns-labels --selector="app in (myapp, back)" --show-labels
+
+kubectl get pods -n ns-labels --selector=app=myapp,tier=front --show-labels 
+
+kubectl get pods -n ns-labels --selector=app=myapp,tier!=front --show-labels
+
+kubectl delete ns ns-labels

@@ -1,0 +1,23 @@
+docker-compose folder
+
+show docker compose
+
+docker-compose up -d 
+
+start http://localhost:7000
+
+
+==========================================================
+
+EchoApp Docker compose
+
+Falar sobre override
+
+Volume
+
+docker-compose up --build
+
+start http://localhost:8080
+
+Debug no VS Code
+

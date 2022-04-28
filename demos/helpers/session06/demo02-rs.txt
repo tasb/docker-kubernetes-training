@@ -1,0 +1,35 @@
+kubectl create ns ns-rs
+
+kubectl apply -f replica-set.yml -n ns-rs
+
+kubectl get rs -n ns-rs
+
+kubectl describe rs frontend -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl delete pod frontend-dbhwj -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl run nginx --image=nginx --labels="tier=frontend" -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl delete rs frontend -n ns-rs
+
+kubectl run nginx --image=nginx --port=80 --labels="tier=frontend" -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl apply -f replica-set.yml -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl delete rs frontend -n ns-rs
+
+kubectl get pods -n ns-rs --show-labels
+
+kubectl run nginx --image=nginx --port=80 --labels="tier=frontend" --dry-run=client -o yaml
+
+kubectl delete ns ns-rs

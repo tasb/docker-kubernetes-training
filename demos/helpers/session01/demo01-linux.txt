@@ -1,0 +1,16 @@
+docker run -d -p 8080:80 tutum/wordpress
+
+//get-wsl-ip.ps1
+
+start http://localhost:8080
+
+docker run -d -p 8080:80 tutum/wordpress
+docker run -d -p 8090:80 tutum/wordpress
+docker run -d -P --name wordpress tutum/wordpress
+
+start http://localhost:8090
+start http://localhost:PORT
+
+docker ps
+docker images
+

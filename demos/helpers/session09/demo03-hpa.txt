@@ -1,0 +1,17 @@
+kubectl create ns hpa-ns
+
+kubectl apply -f hpa-sample.yaml -n hpa-ns
+
+kubectl apply -f load-generator.yaml -n hpa-ns
+
+--> change replicas on load
+
+kubectl apply -f load-generator.yaml -n hpa-ns
+
+kubectl top pods -n hpa-ns
+
+kubectl apply -f hpa.yaml -n hpa-ns
+
+kubectl get hpa -n hpa-ns
+
+kubectl delete ns hpa-ns

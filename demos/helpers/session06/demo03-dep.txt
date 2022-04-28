@@ -1,0 +1,29 @@
+kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo
+
+kubectl apply -f mydep-01-lime.yaml
+
+kubectl get deployments
+
+kubectl get rs
+
+kubectl get pods --show-labels
+
+kubectl apply -f otherdep.yaml
+
+kubectl apply -f mydep-01-yellow.yaml
+
+kubectl apply -f mydep-01-maroon.yaml
+
+kubectl rollout undo deploy mydep
+
+kubectl apply -f mydep-01-pink.yaml
+
+kubectl apply -f mydep-01-aqua-invalid.yaml
+
+kubectl apply -f mydep-01-aqua-invalid.yaml
+
+kubectl rollout undo deploy mydep --to-revision=1
+
+kubectl apply -f mydep-01-blue-recreate.yaml
+
+kubectl delete deploy mydep otherdep

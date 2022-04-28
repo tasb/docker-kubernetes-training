@@ -1,0 +1,28 @@
+kubectl create ns config-ns
+
+kubectl apply -f config-map.yaml -n config-ns
+
+kubectl get configmaps -n config-ns
+
+kubectl describe configmap -n config-ns myapp-config
+
+kubectl apply -f dep-with-configmap.yaml  -n config-ns
+
+kubectl exec -it XXXXXXX
+
+> export
+> cat /config/ui.properties
+> exit
+
+------> change configmap
+
+kubectl apply -f config-map.yaml -n config-ns
+
+kubectl exec -it XXXXXXX
+
+> export
+> cat /config/ui.properties
+> exit
+
+kubectl delete ns config-ns
+

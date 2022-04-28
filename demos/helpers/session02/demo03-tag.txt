@@ -1,0 +1,21 @@
+docker logout
+
+docker tag echo-api echo-api:turmaX
+
+docker images
+
+docker tag echo-api:turmaX tasb/echo-api:turmaX
+
+docker push tasb/echo-api:turmaX
+
+docker login
+
+docker rmi tasb/echo-api:turmaX
+
+docker push tasb/echo-api:turmaX
+
+docker run -d -p 9000:80 tasb/echo-api:turmaX
+
+curl http://localhost:9000/echo/teste
+
+

@@ -1,0 +1,29 @@
+kubectl create ns my-ns
+
+kubectl get ns
+
+kubectl apply -f new-namespace.yaml
+
+kubectl get ns
+
+kubectl run my-pod --image=nginx --port=80 -n new-ns
+
+kubectl get pods
+
+kubectl get pods -n new-ns
+
+kubectl get pods -A
+
+kubectl apply -f pod.yaml -n new-ns
+
+kubectl get pods -n new-ns
+
+kubectl apply -f pod-ns.yaml
+
+kubectl get pods -n new-ns
+
+kubectl delete ns new-ns
+
+kubectl delete ns my-ns
+
+

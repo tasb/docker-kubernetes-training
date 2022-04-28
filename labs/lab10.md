@@ -49,6 +49,7 @@ This component is implemented using a Microsoft SQL Server 2017.
 
 - Image: `mcr.microsoft.com/mssql/server:2017-latest`
 - Data must be persistent
+  - Folder wh3re MS SQL keeps data: `/var/opt/mssql/data`
 - Needs two enviroment variables
 
   - `ACCEPT_EULA=Y` (static value)

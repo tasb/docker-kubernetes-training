@@ -1,0 +1,13 @@
+kubectl config view
+kubectl config current-context
+kubectl config get-contexts
+kubectl config use-context docker-desktop
+
+kubectl get nodes
+
+kubectl get nodes --show-labels
+
+kubectl describe node minikube
+
+kubectl api-resources
+kubectl api-resources --verbs=list,get

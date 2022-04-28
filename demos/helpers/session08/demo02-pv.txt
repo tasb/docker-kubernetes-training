@@ -1,0 +1,22 @@
+kubectl apply -f pv.yaml
+
+kubectl get pv
+
+kubectl create ns pvc-ns
+
+kubectl apply -f pvc.yaml -n pvc-ns
+
+kubectl get pvc -n pvc-ns
+
+kubectl apply -f nginx-with-pvc.yaml -n pvc-ns
+
+kubectl get all -n pvc-ns
+
+kubectl exec -it XXX -- bash
+
+kubectl apply -f dotnet-with-pvc.yaml -n pvc-ns
+
+kubectl exec -it XXX -- bash
+
+kubectl delete ns pvc-ns
+

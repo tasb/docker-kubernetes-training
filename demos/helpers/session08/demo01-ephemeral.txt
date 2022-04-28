@@ -1,0 +1,23 @@
+kubectl apply -f ephemeral-volumes.yaml
+
+kubectl get pods
+
+kubectl exec -it ephemeral-dep-c944bc95c-jqvmf -c nginx -- bash
+
+nginx> ls /share
+nginx> echo "some text to a file" > file.txt
+nginx> ./somefile file.txt
+
+kubectl exec -it ephemeral-dep-c944bc95c-jqvmf -c redis -- bash
+
+redis> cd /share/
+redis> hostname > file.txt
+
+nginx> cd /usr/share/nginx/html/
+nginx> ls
+nginx> cat file.txt
+nginx> hostname >> file.txt
+
+redis> cat file.txt
+
+kubectl delete deploy ephemeral-dep
