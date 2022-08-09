@@ -4,9 +4,9 @@ metadata:
   name: myapp-config
 data:
   database: mongodb
-  database_uri: mongodb://localhost:27017
+  database_uri: mongodb://localhost:27018
 
   user-interface.properties: |
-    color.good=green
+    color.good=red
     color.bad=yellow
     allow.textmode=true

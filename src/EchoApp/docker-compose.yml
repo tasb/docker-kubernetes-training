@@ -17,6 +17,3 @@ services:
       dockerfile: ./Dockerfile.multi
     depends_on:
       - echo-bd
-    
-
-    

@@ -20,7 +20,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=echo-bd,1433;Initial Catalog=echo-log;User ID=SA;Password=P@ssw0rd;
     ports:
-        - "9000:80"
+        - "9001:80"
     deploy:
       restart_policy:
         condition: on-failure
