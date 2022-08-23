@@ -77,7 +77,7 @@ Let's list all running pods to check if your pod is running properly.
 kubectl get pods
 ```
 
-You should get the following outpur.
+You should get the following output.
 
 ```bash
 NAME             READY   STATUS    RESTARTS   AGE

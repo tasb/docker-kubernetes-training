@@ -183,7 +183,7 @@ You should get an output like this.
 🌟  The 'dashboard' addon is enabled
 ```
 
-To get access to the dasboard active it using the next command.
+To get access to the dashboard active it using the next command.
 
 ```bash
 minikube dashboard --url

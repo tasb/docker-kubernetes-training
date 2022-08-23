@@ -25,7 +25,15 @@
     ],
     "cSpell.enabled": true,
     "cSpell.words": [
+        "aspnet",
+        "aspnetapp",
+        "azuredocs",
+        "bitnami",
         "kubectl",
-        "Kubernetes"
+        "kubelet",
+        "Kubernetes",
+        "minikube",
+        "myapp",
+        "mydep"
     ]
 }

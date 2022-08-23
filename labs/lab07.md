@@ -286,7 +286,7 @@ You can check if you ingress is properly configured running this command.
 kubectl describe ingress echo-app-ingress -n echo-app-ns
 ```
 
-You need an additional step to make everuthing working. First, let's get the ingress IP.
+You need an additional step to make everything working. First, let's get the ingress IP.
 
 ```bash
 kubectl get ingress echo-app-ingress -n echo-app-ns

@@ -1,6 +1,6 @@
 # Lab 10 - Connect all the dots
 
-On this lab you'll build Dockerfiles and Kubernetes manifests for an app.
+On this lab you'll build Dockerfile and Kubernetes manifests for an app.
 
 ## On this lab
 
@@ -13,7 +13,7 @@ On this lab you'll build Dockerfiles and Kubernetes manifests for an app.
 
 You'll deploy a simple Todo App on your Kubernetes cluster.
 
-First, download source code available on this [link](https://github.com/tasb/todo-app/archive/refs/tags/v1.zip).
+First, download source code available on this [link](https://github.com/tasb/todo-app-dotnet-psql/archive/refs/tags/v1.zip).
 
 Unzip it on your machine and open the VS Code (or another code editor) on root folder.
 
@@ -23,8 +23,7 @@ Then, confirm that you have Docker and Kubernetes cluster running on your machin
 
 On this lab you'll have the following goals:
 
-- **Create Dockerfiles for webapp and api**
-- **Create Docker compose scripts**
+- **Create Dockerfile for webapp and api**
 - **Push to Docker hub**
 - **Create Kubernetes Manifests**
   
@@ -32,6 +31,8 @@ On this lab you'll have the following goals:
   - **Services**
   - **PersistentVolume and PersistentVolumeClaim**
   - **ConfigMaps and Secrets**
+
+Doing **Create Docker compose scripts** is not mandatory but may help you to create Kubernetes manifests.
 
 ## Todo App Components
 
@@ -43,17 +44,17 @@ Let's deep dive on [Todo DB](lab10.md#todo-db), [Todo API](lab10.md#todo-api) an
 
 ### Todo DB
 
-This component is implemented using a Microsoft SQL Server 2017.
+This component is implemented using a PostreSQL 14.
 
 **Details**:
 
-- Image: `mcr.microsoft.com/mssql/server:2017-latest`
+- Image: `postgres:14.2-alpine`
 - Data must be persistent
-  - Folder wh3re MS SQL keeps data: `/var/opt/mssql/data`
-- Needs two enviroment variables
+  - Folder where PostreSQL keeps data: `/var/lib/postgresql/data`
+- Needs two environment variables
 
-  - `ACCEPT_EULA=Y` (static value)
-  - `SA_PASSWORD`, with the value you want (notice connection string on [Todo API](lab10.md#todo-api))
+  - `POSTGRES_USER`, with the value you want (notice connection string on [Todo API](lab10.md#todo-api))
+  - `POSTGRES_PASSWORD`, with the value you want (notice connection string on [Todo API](lab10.md#todo-api))
 
 **Tasks**:
 
@@ -68,7 +69,9 @@ This component is implemented using a .NET 6 Minimal API web app.
 
 - Endpoints available on `/todos/`
 - Connects to [Todo DB](lab10.md#todo-db)
-- Connection string on environment variable `ConnectionStrings__TodosDb`
+- Connection string on environment variable `ConnectionStrings__TodosDb` with following format
+  - `User ID=<USERNAME>;Password=<PASSWORD>;Server=tododb;Port=5432;Database=TodoDb;Integrated Security=true;Pooling=true;`
+  - Recall that you need to change username and password with chosen values on Database configuration
 
 **Tasks**:
 
@@ -84,7 +87,7 @@ This component is implemented using a .NET 6 MVC web app.
 
 - Webapp available on `/` or `/todo`
 - Connects to [Todo API](lab10.md#todo-api)
-- API URL defined on environment variable `Services.TodoAPI`. This variable must contain complete URL (p. ex., `http://URL/todos`)
+- API URL defined on environment variable `Services__TodoAPI`. This variable must contain complete URL (p. ex., `http://URL/todos`)
 
 **Tasks**:
 
@@ -101,6 +104,8 @@ dotnet restore "MyProject.csproj"
 dotnet build "MyProject.csproj" -c Release -o /app/build
 dotnet publish "MyProject.csproj" -c Release -o /app/publish /p:UseAppHost=false
 ```
+
+You can take a look on the sample [EchoApp](https://github.com/tasb/docker-kubernetes-training/tree/main/src/EchoApp) used during session demos.
 
 ## Kubernetes Architecture
 

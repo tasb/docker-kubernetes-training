@@ -168,7 +168,7 @@ And you get an output like this.
 => CACHED [final 2/2] COPY --from=publish /app/publish .
 ```
 
-If you want to force docker to build all layers again withou using cache, you may use '--no-cache' flag.
+If you want to force docker to build all layers again without using cache, you may use '--no-cache' flag.
 
 ```bash
 docker build --no-cache -t my-echo-api .
@@ -239,7 +239,7 @@ docker login
 Ypu should get an output like this (after entering your credentials).
 
 ```bash
-Login with your Docker ID to push and pull images from Docker Hub. If you dont have a Docker ID, head over to https://hub.docker.com to create one.
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
 Username: DOCKER_ID
 Password:
 

@@ -1,4 +1,4 @@
-# Lab 04 - Let’s put all together
+# Additional lab - Let’s put all together
 
 On this lab you'll have a change to put all things together that we learned during first four session.
 

@@ -1,12 +1,14 @@
 # Training on Containers and Kubernetes
 
-On this repo you can find 10 different labs that allow you to gradually have an hands-on experience on containers (using Docker) and Kubernetes (using Docker Kubernetes).
+On this repo you can find 10 different labs that allow you to gradually have an hands-on experience on containers (using Docker) and local Kubernetes cluster.
 
 Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access a better version of these instructions.
 
 ## On this page
 
 - [Prerequisites](README.md#prerequisites)
+  - [Windows](#windows)
+  - [Ubuntu](#ubuntu)
 - [Labs](README.md#labs)
 - [Slides](README.md#slides)
 - [Feedback](README.md#feedback)
@@ -15,7 +17,7 @@ Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access 
 
 To perform the labs on this repo you need to have the following software installed on your machine.
 
-<!-- ### Prerequisites - Windows
+### Windows
 
 1. Windows 10+ (Windows 11 is recommended)
 2. [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
@@ -31,7 +33,7 @@ To perform the labs on this repo you need to have the following software install
     - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
     - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) -->
 
-### Prerequisites - Ubuntu
+### Ubuntu
 
 1. Ubuntu 20.04
 2. Docker. [How to install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -45,7 +47,7 @@ To perform the labs on this repo you need to have the following software install
     - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
     - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
-This stop works on top of [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install).
+This setup works on top of [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install).
 
 ## Labs
 
@@ -56,7 +58,7 @@ You may navigate for each one individually or you may follow the sequence starti
 1. [Introduction to containers](labs/lab01.md)
 2. [How to create my own container](labs/lab02.md)
 3. [Persistence in containers](labs/lab03.md)
-4. [Let’s put all together!](labs/lab04.md)
+4. [Let's compose your containers](labs/lab04.md)
 5. [Introduction to Kubernetes](labs/lab05.md)
 6. [Deployment lifecycle](labs/lab06.md)
 7. [Managing services](labs/lab07.md)
@@ -69,7 +71,7 @@ You may navigate for each one individually or you may follow the sequence starti
 Get access to the content used to share Kubernetes concepts during sessions.
 
 1. [Introduction to containers](slides/Session01.pdf)
-2. [Dockerfiles and Tags](slides/Session02.pdf)
+2. [Dockerfile and Tags](slides/Session02.pdf)
 3. [Persistence in containers](slides/Session03.pdf)
 4. [Docker compose](slides/Session04.pdf)
 5. [Introduction to Kubernetes](slides/Session05.pdf)
