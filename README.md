@@ -9,6 +9,7 @@ Navigate to <https://tasb.github.io/docker-kubernetes-training/> to have access 
 - [Prerequisites](README.md#prerequisites)
   - [Windows](#windows)
   - [Ubuntu](#ubuntu)
+  - [macOS](#macos)
 - [Labs](README.md#labs)
 - [Slides](README.md#slides)
 - [Feedback](README.md#feedback)
@@ -31,7 +32,7 @@ To perform the labs on this repo you need to have the following software install
     - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
     - [Docker compose](https://marketplace.visualstudio.com/items?itemName=p1c2u.docker-compose)
     - [Kubernetes](https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools)
-    - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) -->
+    - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
 ### Ubuntu
 
@@ -48,6 +49,18 @@ To perform the labs on this repo you need to have the following software install
     - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
 This setup works on top of [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install).
+
+### macOS
+
+1. Docker. [Install Docker Desktop on Mac](https://docs.docker.com/desktop/install/mac-install/)
+2. Minikube. [How to install Minikube on Mac](https://minikube.sigs.k8s.io/docs/start/)
+3. Kubectl. [How to install Kubectl on Mac](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+4. Install [Visual Studio Code](https://code.visualstudio.com/docs/setup/mac) (or other code editor of your preference)
+5. (Optional) Some VS Code extension helpful for Docker and Kubernetes integration
+
+    - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+    - [Docker compose](https://marketplace.visualstudio.com/items?itemName=p1c2u.docker-compose)
+    - [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 
 ## Labs
 
