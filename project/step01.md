@@ -1,13 +1,12 @@
-# Lab 10 - Connect all the dots
+# ToDo App - Dockerfile and Docker compose
 
-On this lab you'll build Dockerfile and Kubernetes manifests for an app.
+On this step #1 you'll build Dockerfile and docker compose files for ToDo App
 
 ## On this lab
 
-- [Prerequisites](lab10.md#prerequisites)
-- [Goals](lab10.md#goals)
-- [Todo App Components](lab10.md#todo-app-components)
-- [Kubernetes architecture](lab10.md#kubernetes-architecture)
+- [Prerequisites](#prerequisites)
+- [Goals](#goals)
+- [Todo App Components](#todo-app-components)
 
 ## Prerequisites
 
@@ -23,24 +22,15 @@ Then, confirm that you have Docker and Kubernetes cluster running on your machin
 
 On this lab you'll have the following goals:
 
-- **Create Dockerfile for webapp and api**
-- **Push to Docker hub**
-- **Create Kubernetes Manifests**
+1. Create Dockerfile for webapp and api
+2. Push to Docker hub
+3. Create Docker compose files to run your app
   
-  - **Deployments**
-  - **Services**
-  - **PersistentVolume and PersistentVolumeClaim**
-  - **ConfigMaps and Secrets**
-
-Doing **Create Docker compose scripts** is not mandatory but may help you to create Kubernetes manifests.
-
 ## Todo App Components
 
 Todo App is a basic 3-tier application with the following components.
 
-![Todo App Components](images/lab10/image01.png "Todo App Components")
-
-Let's deep dive on [Todo DB](lab10.md#todo-db), [Todo API](lab10.md#todo-api) and [Todo WebApp](lab10.md#todo-webapp).
+![Todo App Components](images/image01.png "Todo App Components")
 
 ### Todo DB
 
@@ -56,11 +46,6 @@ This component is implemented using a PostreSQL 14.
   - `POSTGRES_USER`, with the value you want (notice connection string on [Todo API](lab10.md#todo-api))
   - `POSTGRES_PASSWORD`, with the value you want (notice connection string on [Todo API](lab10.md#todo-api))
 
-**Tasks**:
-
-- Create Kubernetes Deployment and Services to run this workload
-- Create additional objects to configure properly this workload
-
 ### Todo API
 
 This component is implemented using a .NET 6 Minimal API web app.
@@ -68,16 +53,10 @@ This component is implemented using a .NET 6 Minimal API web app.
 **Details**:
 
 - Endpoints available on `/todos/`
-- Connects to [Todo DB](lab10.md#todo-db)
+- Connects to [Todo DB](#todo-db)
 - Connection string on environment variable `ConnectionStrings__TodosDb` with following format
   - `User ID=<USERNAME>;Password=<PASSWORD>;Server=tododb;Port=5432;Database=TodoDb;Integrated Security=true;Pooling=true;`
   - Recall that you need to change username and password with chosen values on Database configuration
-
-**Tasks**:
-
-- Create Dockerfile using multi-stage
-- Create Kubernetes Deployment and Services to run this workload
-- Create additional objects to configure properly this workload
 
 ### Todo WebApp
 
@@ -88,12 +67,6 @@ This component is implemented using a .NET 6 MVC web app.
 - Webapp available on `/` or `/todo`
 - Connects to [Todo API](lab10.md#todo-api)
 - API URL defined on environment variable `Services__TodoAPI`. This variable must contain complete URL (p. ex., `http://URL/todos`)
-
-**Tasks**:
-
-- Create Dockerfile using multi-stage
-- Create Kubernetes Deployment and Services to run this workload
-- Create additional objects to configure properly this workload
 
 ### Additional Details
 
@@ -106,23 +79,3 @@ dotnet publish "MyProject.csproj" -c Release -o /app/publish /p:UseAppHost=false
 ```
 
 You can take a look on the sample [EchoApp](https://github.com/tasb/docker-kubernetes-training/tree/main/src/EchoApp) used during session demos.
-
-## Kubernetes Architecture
-
-Regarding Kubernetes components, you may check the final architecture on next image.
-
-![Kubernetes Architecture](images/lab10/image02.png "Kubernetes Architecture")
-
-At the end of this lab you should get on your cluster an outcome like you see on previous image.
-
-Create all needed files and deploy to your container.
-
-At the end you should navigate to <http://localhost> and should get and use Todo App.
-
-## Congratulations
-
-You've finished all the labs!
-
-Hopefully you feel more prepared about containers and kubernetes.
-
-Well Done!
