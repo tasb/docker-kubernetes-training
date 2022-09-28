@@ -8,6 +8,10 @@ kubectl get ns
 
 kubectl run my-pod --image=nginx --port=80 -n new-ns
 
+kubectl run my-pod --image=nginx --port=80 -n new-ns
+
+kubectl run my-pod --image=nginx --port=80 -n my-ns
+
 kubectl get pods
 
 kubectl get pods -n new-ns
