@@ -2,6 +2,9 @@ cd EchoApp/echo-api
 
 dotnet build
 dotnet run
+dotnet run --urls=http://+:10000/
+
+http://tiberna-hp:10000/hostname
 
 dotnet publish -c Release -o publish
 
