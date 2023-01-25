@@ -8,10 +8,6 @@ kubectl get ns
 
 kubectl run my-pod --image=nginx --port=80 -n new-ns
 
-kubectl run my-pod --image=nginx --port=80 -n new-ns
-
-kubectl run my-pod --image=nginx --port=80 -n my-ns
-
 kubectl get pods
 
 kubectl get pods -n new-ns
@@ -26,8 +22,18 @@ kubectl apply -f pod-ns.yaml
 
 kubectl get pods -n new-ns
 
+kubectl get pods -A
+
+kubectl get pods --sort-by=.metadata.name -A
+
+kubectl get pods --sort-by=.metadata.namespace -A
+
+kubectl get pods --sort-by='.status.containerStatuses[0].restartCount' -A
+
+kubectl get pods --sort-by='.metadata.name' -A | tac
+
 kubectl delete ns new-ns
 
 kubectl delete ns my-ns
 
-
+kubectl delete pods --all

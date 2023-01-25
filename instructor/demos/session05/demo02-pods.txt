@@ -10,7 +10,7 @@ kubectl apply -f pod.yaml
 
 kubectl get pods
 
-kubectl get pod nginx-pod -o yaml
+#kubectl get pod nginx-pod -o yaml
 
 kubectl apply -f bad-image.yaml
 
@@ -24,25 +24,21 @@ kubectl apply -f bad-image.yaml
 
 kubectl get pods
 
-kubectl apply -f double-container.yml
+kubectl apply -f voting-app.yml
 
 kubectl get pods
 
 kubectl exec -it nginx-pod -- sh
 
-kubectl exec -it redis-nginx -c frontend -- bash
+kubectl exec -it vote-app -c vote-front -- bash
 
-kubectl exec -it redis-nginx -- bash
-
-apt-get update
-
-apt-get install -y curl procps
+kubectl exec -it vote-app -- bash
 
 curl localhost
 
-kubectl port-forward nginx-pod 8080:80
+kubectl port-forward nginx-pod 8080:80 --address 0.0.0.0
 
-kubectl port-forward redis-nginx 8080:80
+kubectl port-forward vote-app 8080:80 --address 0.0.0.0
 
 ==============================================================
 
@@ -67,3 +63,13 @@ kubectl apply -f pod-with-high-resources.yaml
 kubectl get pods
 
 kubectl describe pod no-resources-pod
+
+==============================================================
+
+kubectl get pods
+
+kubectl get pod vote-app -o yaml
+
+kubectl get pods --sort-by=.metadata.name
+
+kubectl get pods --sort-by=.spec.containers[0].name

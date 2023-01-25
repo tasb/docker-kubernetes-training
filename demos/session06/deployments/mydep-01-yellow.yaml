@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mydep
+  annotations:
+    kubernetes.io/change-cause: "Change to yellow"
 spec:
   replicas: 3
   selector:

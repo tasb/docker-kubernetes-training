@@ -4,10 +4,10 @@ kubectl get svc
 
 kubectl get nodes -o wide
 
-curl http://IP:3xxxx
+curl http://<IP-NODE>:3xxxx
 
 kubectl apply -f svc-nodeport.yaml
 
 kubectl get svc
 
-curl http://IP:31000
+curl http://<IP-NODE>:31000

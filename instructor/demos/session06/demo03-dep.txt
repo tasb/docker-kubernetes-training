@@ -1,4 +1,4 @@
-kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo
+kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo --address 0.0.0.0
 
 kubectl apply -f mydep-01-lime.yaml
 
@@ -8,11 +8,17 @@ kubectl get rs
 
 kubectl get pods --show-labels
 
-kubectl apply -f otherdep.yaml
+kubectl describe rs mydep-66cccd9c7d
+
+--> chnage replicas mydep-01-lime.yaml
+
+kubectl apply -f mydep-01-lime.yaml
 
 kubectl apply -f mydep-01-yellow.yaml
 
 kubectl apply -f mydep-01-maroon.yaml
+
+kubectl rollout history deployment/mydep
 
 kubectl rollout undo deploy mydep
 
@@ -26,4 +32,4 @@ kubectl rollout undo deploy mydep --to-revision=1
 
 kubectl apply -f mydep-01-blue-recreate.yaml
 
-kubectl delete deploy mydep otherdep
+kubectl delete deploy mydep

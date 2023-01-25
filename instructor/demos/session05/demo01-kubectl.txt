@@ -4,10 +4,12 @@ kubectl config get-contexts
 kubectl config use-context docker-desktop
 
 kubectl get nodes
-
+kubectl get nodes -o wide
 kubectl get nodes --show-labels
+kubectl get nodes -o wide -L kubernetes.io/arch
 
-kubectl describe node minikube
+
+kubectl describe node <node>
 
 kubectl api-resources
 kubectl api-resources --verbs=list,get

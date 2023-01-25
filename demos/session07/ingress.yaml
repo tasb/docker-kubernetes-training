@@ -6,7 +6,24 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: ingress.test
+  - host: test.ingress.tech
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: sample-svc
+            port:
+              number: 8080
+      - path: /nginx
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-svc
+            port:
+              number: 8081
+  - host: k8s.ingress.tech
     http:
       paths:
       - path: /(.*)

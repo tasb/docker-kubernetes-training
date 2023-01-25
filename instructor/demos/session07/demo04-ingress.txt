@@ -2,9 +2,17 @@ kubectl apply -f nginx-dep.yaml
 
 kubectl apply -f ingress.yaml
 
-curl http://ingress.test/
+curl http://test.ingress.tech/
 
-curl http://ingress.test/nginx
+curl http://test.ingress.tech/nginx
+
+curl http://test.ingress.tech/xpto
+
+curl http://k8s.ingress.tech/
+
+curl http://k8s.ingress.tech/nginx
+
+curl http://k8s.ingress.tech/xpto
 
 kubectl delete --all deployments
 kubectl delete --all services

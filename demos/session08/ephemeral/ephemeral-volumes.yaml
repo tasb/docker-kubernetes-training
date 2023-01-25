@@ -20,6 +20,8 @@ spec:
           volumeMounts:
           - name: tempvol
             mountPath: /share
+          - name: emptyfolder 
+            mountPath: /empty
         - name: nginx
           image: nginx:1.17
           ports:
@@ -27,13 +29,19 @@ spec:
           volumeMounts:
           - name: tempvol
             mountPath: /usr/share/nginx/html
-          - name: hostfolder 
-            mountPath: /share/somefile
+          - name: hostname 
+            mountPath: /share/node-hostname
             readOnly: true
       volumes:
       - name: tempvol
-        emptyDir: {}
-      - name: hostfolder
+        emptyDir:
+          sizeLimit: 10Ki
+          # medium: Memory
+      - name: hostname
         hostPath:
-          path: /bin/cat
-          type: FileOrCreate
+          path: /etc/hostname
+          type: File
+      - name: emptyfolder
+        hostPath:
+          path: /tmp/xpto
+          type: DirectoryOrCreate

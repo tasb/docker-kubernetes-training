@@ -30,6 +30,4 @@ kubectl delete rs frontend -n ns-rs
 
 kubectl get pods -n ns-rs --show-labels
 
-kubectl run nginx --image=nginx --port=80 --labels="tier=frontend" --dry-run=client -o yaml
-
 kubectl delete ns ns-rs

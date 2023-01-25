@@ -4,9 +4,7 @@ kubectl get pods
 
 kubectl exec -it ephemeral-dep-c944bc95c-jqvmf -c nginx -- bash
 
-nginx> ls /share
-nginx> echo "some text to a file" > file.txt
-nginx> ./somefile file.txt
+nginx> cat /share/node-hostname
 
 kubectl exec -it ephemeral-dep-c944bc95c-jqvmf -c redis -- bash
 
@@ -20,4 +18,13 @@ nginx> hostname >> file.txt
 
 redis> cat file.txt
 
+redis> echo "<html><body><h1>Kubernetes</h1><p>Using ephemeral volumes</p></body></html>" > index.html
+
+kubectl port-forward ephemeral-dep-XXXXX 8080:80 --address 0.0.0.0
+
+redis> dd if=/dev/urandom of=/share/largefile bs=1M count=1
+
+>>> check pod to be evicted
+
 kubectl delete deploy ephemeral-dep
+
